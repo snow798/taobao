@@ -1,0 +1,92 @@
+@baseColor: #f40;
+
+/**
+ * 1. 设置默认字体为“无衬线”字体
+ * 2. 阻止iOS下当屏幕方向改变时字体大小的改变
+ */
+
+html {
+    font-family: "Helvetica Neue", Helvetica, STHeiTi, "Microsoft YaHei", sans-serif; /* 1 */
+    -webkit-text-size-adjust: 100%; /* 2 */
+    font-size: 50px;
+    height: 100%;
+    //消除被点击元素的外观变化，所谓的点击后高亮：
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    //阻止旋转屏幕时自动调整字体大小：
+    -webkit-text-size-adjust:none;
+    //解决字体在移动端比例缩小后出现锯齿的问题：
+    -webkit-font-smoothing: antialiased;
+    //盒子阴影：
+    -webkit-box-shadow: none;
+    //圆角
+    -webkit-border-radius: 0;
+    //appearance 属性使元素看上去像标准的用户界面元素，
+    //也可以取消默认的样式：
+    -webkit-appearance: none;
+    //鼠标可以悬停在内容上（指向该内容）而不激活它（单击它）：
+    -webkit-touch-action: manipulation; 
+}
+
+/**
+ * 重置body的margin样式
+ */
+
+body {
+    margin: 0;
+    font-size: 0.28rem;
+}
+
+/*
+ * 消除图片与父容器底部间的空隙，参考： http://jsfiddle.net/gZQRJ/165/
+ */
+
+img {
+    vertical-align: middle;
+}
+
+/* 阻止长按菜单 */
+
+a, img {
+    -webkit-touch-callout: none;
+}
+
+
+.main{}
+.module{}
+
+.top-fixed{
+	height: 1rem;
+	line-height: 1rem;
+    width: 100%;
+    background-color: @baseColor;
+    display:flex;
+    flex-flow: row wrap;
+    padding-right: 0.25rem;
+    box-sizing:border-box;
+    align-items:center;
+
+    .logo{
+        display: block;
+        width: 1.2rem;
+        height: 1rem;
+        text-align: center;
+        background-size: 100%;
+        background-repeat: no-repeat;
+
+        img{
+            width: 0.7rem;
+        }
+
+    }
+    input{
+        flex:0.5;
+        height: 0.6rem;
+        line-height: 0.6rem;
+        border: 0;
+        outline: none;
+        color: #fff;
+        background-color: rgb(232, 81, 42);
+        border-radius: 0.11rem;
+    }
+
+}
