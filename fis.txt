@@ -1,0 +1,16 @@
+
+设置静态资源的域名前缀
+fis release --domains --dest ../dist
+
+打包配置
+fis release --pack --md5 --dest ./dist
+
+
+
+fis release --watch --domains --dest ../dist
+
+--domains 应用资源前缀
+
+--optimize  压缩
+
+--pack 打包
