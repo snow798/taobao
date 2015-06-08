@@ -10,6 +10,8 @@ html {
     -webkit-text-size-adjust: 100%; /* 2 */
     font-size: 50px;
     height: 100%;
+    background-color: #EEE;
+
     //消除被点击元素的外观变化，所谓的点击后高亮：
     -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
     //阻止旋转屏幕时自动调整字体大小：
@@ -54,6 +56,7 @@ a, img {
 .main{}
 .module{}
 
+/*首页头部搜索*/
 .top-fixed{
 	height: 1rem;
 	line-height: 1rem;
@@ -89,4 +92,60 @@ a, img {
         border-radius: 0.11rem;
     }
 
+}
+
+/*首页banner*/
+.top_banner{
+    width: 100%;
+
+    img{
+        width: 100%;
+    }
+}
+
+/*首页mean列表*/
+.menu_list{
+    display: flex;
+    width: 100%;
+    height: auto;
+    padding: 0.2rem 0;
+    background-color: #fff;
+    justify-content: center;
+    flex-flow: wrap;
+
+    .menu_item{
+        border-sizing: border-box;
+        width: 25%;
+        height: 1rem;
+        padding-top: 0.25rem;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 50%;
+        
+    }
+}
+
+/*首页中间广告*/
+.ad{
+    width: 100%;
+    height: 4.3rem;
+    clear: both;
+    box-sizing: border-box; 
+    display: flex;
+    background-color: #fff;
+    margin-top: 0.3rem;
+
+    .ad_left{
+        flex:0.4;
+        height: auto;
+        box-sizing: content-box; 
+
+        background-repeat: no-repeat;
+        background-image: url(http://gw.alicdn.com/tps/i3/TB1ScelIXXXXXcKXpXXm_8E_XXX-450-540.jpg_q50.jpg?imgtag=avatar);
+        background-size: 100% 100%;
+    }
+    .ad_right{
+        flex: 0.6;
+
+    }
 }
