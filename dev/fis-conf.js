@@ -32,10 +32,10 @@ fis.config.set('roadmap.ext.less', 'css');
 
 /*fis.config.set({
     roadmap : {
-        domain : "http://127.0.0.1:88/ok/taobao/dist//static"
+        domain : "http://127.0.0.1:88/ok/taobao/dist/"
     }
 });*/
 
-/*fis.config.set('roadmap', {
-        domain : "/dist/"
-    });*/
+fis.config.set('roadmap', {
+        domain : "http://127.0.0.1:88/ok/taobao/dist/"
+    });
