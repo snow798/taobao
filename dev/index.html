@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html style="font-size: 50px;">
 <head>
     <title>taobao</title>
     <meta charset="utf-8">
@@ -19,6 +19,36 @@
     <script src="lib/html5shiv.min.js"></script>
     <![endif]-->
 </head>
+<script>
+    //自适应REM设置
+    !function(){
+        var isChange= false, oidScreenWidth= 375, oldRem= 50;
+        var html= document.getElementsByTagName('html')[0];
+        var getStyle = function (element,attr) {
+            if(typeof window.getComputedStyle!='undefined'){
+                    return parseFloat(window.getComputedStyle(element,null)[attr]);
+                }else if(element.currentStyle){
+                    return parseFloat(element.currentStyle[attr]);
+                }
+        };
+        function initRem(){
+            console.log(window.screen.width, getStyle(html, 'font-size'));
+            html.style.fontSize= window.screen.width*oldRem/oidScreenWidth+'px';
+            oidScreenWidth= window.screen.width;
+            oldRem= getStyle(html, 'font-size');
+            isChange= false;
+        }
+        window.onresize= function(){
+            if(!isChange){
+                isChange= true;
+                setTimeout(initRem, 700);
+            }
+        };
+        document.addEventListener('DOMContentLoaded', function(){
+            initRem();
+        })
+    }()
+</script>
 <body>
     <!-- 首页头部 -->
     <div class="top-fixed">
@@ -60,7 +90,9 @@
             <span class="context"></span>
         </div>
         <div class="ts_links">
-            <div class=""></div>
+            <div class="ts_links_left">
+            </div>
+            <div class="ts_links_right"></div>
         </div>
 
     </div>
