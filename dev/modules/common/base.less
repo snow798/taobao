@@ -111,6 +111,7 @@ a, img {
         box-flex:1;
         flex: 1;
         width: 6rem;
+        font-size: 0.28rem;
 
 
         height: 0.6rem;
@@ -138,46 +139,37 @@ a, img {
 
 /*首页mean列表*/
 .menu_list{
-    display:-moz-box; /* Firefox */
-    display:-webkit-box; /* Safari and Chrome */
-    display:box;
-    display: -webkit-box; 
-    display: -moz-box; 
-    display: -webkit-flex; 
-    display: flex;
-
-
+    display: block;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 
     width: 100%;
-    height: 3rem;
-    padding: 0.2rem 0;
+    height: 3.46rem;
     background-color: #fff;
+    padding: 0.13rem 0;
+    padding-left: 0.25rem;
 
-    -webkit-justify-content: center;
-    -moz-justify-content: center;
-    -ms-justify-content: center;
-    -o-justify-content: center;
-    justify-content: center;
 
-    -webkit-flex-flow: wrap;
-    -moz-flex-flow: wrap;
-    -ms-flex-flow: wrap;
-    -o-flex-flow: wrap;
-    flex-flow: wrap;
+
 
     .menu_item{
         -webkit-box-sizing: border-box;
         -moz-box-sizing: border-box;
         box-sizing: border-box;
 
-        width: 25%;
-        height: 1rem;
-        padding-top: 0.25rem;
+        width: 1.775rem;
+        height: 1.63rem;
+        float: left;
         background-repeat: no-repeat;
-        background-position: center;
+        background-position: center 10%;
+        font-size: 0.24rem;
 
-        -webkit-background-size: 50%;
-        background-size: 50%;
+        text-align: center;
+        line-height: 2.6rem;
+
+        -webkit-background-size: 55%;
+        background-size: 55%;
 
     }
 }
@@ -185,45 +177,42 @@ a, img {
 /*首页中间广告*/
 .ad{
     width: 100%;
-    height: 4.3rem;
+    height: 3.6rem;
     clear: both;
 
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 
-    -webkit-display: flex;
-    -moz-display: flex;
-    -ms-display: flex;
-    -o-display: flex;
-    display: flex;
-
     background-color: #fff;
     margin-top: 0.15rem;
 
     .ad_left{
-        -webkit-flex: 0.4;
-        flex:0.4;
-
-        height: 4.3rem;
+        width: 3rem;
+        height: 3.6rem;
+        float: left;
         border-right: 1px solid #eee;
 
-        -webkit-box-sizing: content-box;
-        -moz-box-sizing: content-box;
-        box-sizing: content-box;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
 
         background-repeat: no-repeat;
         background-image: url(http://gw.alicdn.com/tps/i3/TB1ScelIXXXXXcKXpXXm_8E_XXX-450-540.jpg_q50.jpg?imgtag=avatar);
-
-        -webkit-background-size: 100% 100%;
-        background-size: 100% 100%;
+        -webkit-background-size: contain;
+        background-size: contain;
     }
     .ad_right{
-        flex: 0.6;
+        width: 4.5rem;
+        float: right;
 
         .ad_right_top{
-            height: 2rem;
-            width: 100%;
+            height: 1.44rem;
+            width: auto;
+
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
             border-bottom:  1px solid #eee;
             background-repeat: no-repeat;
             background-image: url(http://gw.alicdn.com/tps/i2/TB1FmJxHpXXXXX7XpXX.l5FJpXX-675-216.jpg_q50.jpg);
@@ -235,19 +224,19 @@ a, img {
         }
 
         .ad_right_botton{
-            -webkit-display: flex;
-            -moz-display: flex;
-            -ms-display: flex;
-            -o-display: flex;
-            display: flex;
+            width: auto;
+            height: 2.16rem;
             div{
-                height: 2.3rem;
+                height: 2.16rem;
+                width: 2.25rem;
+                float: left;
 
-                -webkit-box-sizing: content-box;
-                -moz-box-sizing: content-box;
-                box-sizing: content-box;
+                display: inline-block;
 
-                flex:0.5;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                box-sizing: border-box;
+
                 background-repeat: no-repeat;
 
                 -webkit-background-size: 100% 100%;
@@ -261,27 +250,29 @@ a, img {
     /*特色市场*/
 .ts{
     width: 100%;
+    height: auto;
     margin-top: 0.12rem;
     background-color: #fff;
 
     .title{
         width: 100%;
-        height: 0.65rem;
-        line-height: 0.65rem;
+        height: 0.74rem;
+        line-height: 0.74rem;
         display: flex;
         border-bottom: 1px solid #eee;
 
         .context{
-            height: 100%;
+            height: 0.74rem;
+            line-height: 0.74rem;
             width: 100%;
             font-size: 0.32rem;
         }
         .context::before{
             display: block;
-            height: 0.65rem;
-            line-height: 0.65rem;
+            height: 0.74rem;
+            line-height: 0.74rem;
             float: left;
-            border-left: #ff4400 solid 4px;
+            border-left: #2f5de0 solid 6px;
             content: "特色市场";
             padding-left: 5px;
             margin-right: 5px;
@@ -292,6 +283,7 @@ a, img {
             line-height: 0.65rem;
             content: "更多";
             padding-right: 5px;
+            margin-top: 0.08rem;
         }
     }
     .title:after{
@@ -311,24 +303,424 @@ a, img {
 
     .ts_links{
         width: 100%;
-        height: 4rem;
+        height: 3.36rem;
 
 
         .ts_links_left{
-            width: 4rem;
-            height: 3.5862rem;
+            width: 3.76rem;
+            height: 3.36rem;
             float: left;
             border-right: 1px solid #eee;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+
+
+            background-image: url(http://gw.alicdn.com/tps/i1/TB1BxL7IXXXXXaQXFXXOq2AFVXX-562-504.jpg_q50.jpg?imgtag=avatar);
+            background-repeat: no-repeat;
+            -webkit-background-size: contain;
+            background-size: contain;
+        }
+        .ts_links_right{
+            width: 3.74rem;
+            height: 3.36rem;
+            float: right;
+
+            div{
+                width: 3.74rem;
+                height: 1.67rem;
+                background-repeat: no-repeat;
+                -webkit-background-size: contain;
+                background-size: contain;
+            }
+        }
+    }
+
+    .ts_two{
+        width: 100%;
+        height: 2.2rem;
+        border-top: 1px solid #eee;
+        border-bottom: 1px solid #eee;
+
+        .ts_two_context{
+            width: 1.8rem;
+            height: 2.2rem;
+            float: left;
+            background-position: center 90%;
+            text-align: center;
+
+            border-left: 1px solid #eee;
 
             -webkit-box-sizing: border-box;
             -moz-box-sizing: border-box;
             box-sizing: border-box;
 
-            background-image: url(http://gw.alicdn.com/tps/i1/TB1BxL7IXXXXXaQXFXXOq2AFVXX-562-504.jpg_q50.jpg?imgtag=avatar);
-            background-repeat: no-repeat;
             background-repeat: no-repeat;
             -webkit-background-size: contain;
             background-size: contain;
+
+            div{
+                font-size: 0.28rem;
+                margin-top: 0.2rem;
+            }
+            p{
+                font-size: 0.2rem;
+                margin-top: 0.01rem;
+            }
+        }
+    }
+    .ts_three{
+        width: 100%;
+        height: 1.3rem;
+        margin-top: 0.1rem;
+
+        .ts_three_item{
+            width: 1.8rem;
+            height: 0.4rem;
+            line-height: 0.4rem;
+            float: left;
+            font-size: 0.24rem;
+            text-indent: 0.3rem;
+
+            border-left: 1px solid #eee;
+
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+
+            span{ margin-right: 0.05rem;}
+        }
+
+        .ts_three_line{
+            clear: both;
+            height: 0.15rem;
+            margin-bottom: 0.15rem;
+            border-bottom: 1px solid #eee;
         }
     }
 }
+
+    /*中间页广告*/
+.md_ad_1{
+    width: 100%;
+    height: 1.5rem;
+
+    background-image: url(http://gw.alicdn.com/tps/i3/TB1nBggIXXXXXXzXVXXwprb_XXX-1125-225.jpg_q50.jpg);
+    background-repeat: no-repeat;
+    -webkit-background-size: contain;
+    background-size: contain;
+}
+
+    /*热门市场*/
+.hotMarket{
+    width: 100%;
+    height: auto;
+    margin-top: 0.15rem;
+    background-color: #fff;
+
+    .title{
+        width: 100%;
+        height:0.7rem;
+    }
+    .title:before{
+        display: block;
+        height: 0.7rem;
+        font-size: 0.32rem;
+        float: left;
+        line-height: 0.7rem;
+        border-left: #f60 solid 6px;
+        content: "热门市场";
+        text-indent: 5px;
+    }
+    .title:after{
+        display: block;
+        float: right;
+        height: 0.7rem;
+        line-height: 0.75rem;
+        font-size: 0.24rem;
+        content: "更多";
+        background-image: url(http://gw.alicdn.com/tps/i4/TB1k3OHGVXXXXaTXVXXIqztGVXX-45-45.png);
+        background-repeat:no-repeat;
+        -webkit-background-size: 15px 15px;
+        background-size: 15px 15px;
+        background-position: right center;
+        padding-right: 20px;
+        margin-right: 10px;
+    }
+    .hotMarket_one{
+        width: 100%;
+        height:2.88rem;
+
+        >.left{
+            width: 3.76rem;
+            height: 2.88rem;
+            float:left;
+            background-image: url(http://gw.alicdn.com/tps/i4/TB1TuAyIXXXXXaTXVXXlvS.FVXX-562-261.jpg_q50.jpg?imgtag=avatar);
+            background-repeat: no-repeat;
+            -webkit-background-size: contain;
+            background-size: contain;
+            background-position: center bottom;
+
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+
+            border-top: 1px solid #eee;
+            border-right: 1px solid #eee;
+
+
+        }
+        >.right{
+            width: 3.74rem;
+            height:2.88rem;
+            float:right;
+            
+            background-image: url(http://gw.alicdn.com/tps/i3/TB1sGQxIXXXXXa2XVXXlvS.FVXX-562-261.jpg_q50.jpg?imgtag=avatar);
+            background-repeat: no-repeat;
+            -webkit-background-size: contain;
+            background-size: contain;
+            background-position: center bottom;
+
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            border-top: 1px solid #eee;
+
+        }
+
+    }
+
+    .tip{
+        text-indent: 0.25rem;
+        font-size: 0.28rem;
+        margin-top:0.25rem;
+    }
+    .pub{
+        text-indent: 0.25rem;
+        font-size: 0.24rem;
+    }
+
+    .hotMarket_two, .hotMarket_three{
+        width: 100%;
+        height: 2.2rem;
+
+        border-top: 1px solid #eee;
+    }
+    .layout{
+
+        >.item{
+            width:1.8rem;
+            height:2.2rem;
+            float: left;
+
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            border-left: 1px solid #eee;
+
+            background-position: center bottom;
+            -webkit-background-size: contain;
+            background-size: contain;
+            background-repeat: no-repeat;
+
+        }
+        >.item_left{
+            border-left:0;
+        }
+    }
+
+}
+
+/*中间页广告*/
+.md_ad_2{
+    width: 100%;
+    height: 1.5rem;
+    background-color: #fff;
+    background-image: url(http://gw.alicdn.com/tps/i2/TB1CJEnIXXXXXb9XVXXwprb_XXX-1125-225.jpg_q50.jpg);
+    background-repeat: no-repeat;
+    -webkit-background-size: contain;
+    background-size: contain;
+}
+
+    /*每日好店*/
+.storePromote{
+    width: 100%;
+    height: auto;
+    background-color: #fff;
+
+    .title{
+        width: 100%;
+        height:0.7rem;
+    }
+    .title:before{
+        display: block;
+        height: 0.7rem;
+        font-size: 0.32rem;
+        float: left;
+        line-height: 0.7rem;
+        border-left: #f60 solid 6px;
+        content: "每日好店";
+        text-indent: 5px;
+    }
+    .title:after{
+        display: block;
+        float: right;
+        height: 0.7rem;
+        line-height: 0.75rem;
+        font-size: 0.24rem;
+        content: "更新40个好点";
+        background-image: url(http://gw.alicdn.com/tps/i4/TB1k3OHGVXXXXaTXVXXIqztGVXX-45-45.png);
+        background-repeat:no-repeat;
+        -webkit-background-size: 15px 15px;
+        background-size: 15px 15px;
+        background-position: right center;
+        padding-right: 20px;
+        margin-right: 10px;
+    }
+
+    .storePromote_context{
+        width: 100%;
+        height: 3.3rem;
+        
+        border-top: 1px solid #eee;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+
+        .storePromote_left{
+            margin-left: 0.15rem;
+        }
+
+        >div{
+            width: 3.6rem;
+            height:2.94rem;
+            float: left;
+            margin-top: 0.1rem;
+
+            >.storePromote_centen{
+                width: 3.56rem;
+                height: 2.4rem;
+                background-color: transparent;
+
+                >.one{
+                    width: 2.34rem;
+                    height: 2.4rem;
+                    float: left;
+
+                    background-repeat: no-repeat;
+                    -webkit-background-size: contain;
+                    background-size: contain;
+
+                }
+
+                >.two, .three{
+                    width: 1.16rem;
+                    height: 1.18rem;
+                    float: right;
+
+                    background-repeat: no-repeat;
+                    -webkit-background-size: contain;
+                    background-size: contain;
+                }
+                >.three{
+                    margin-top: 0.01rem;
+                }
+
+            }
+
+            >.storePromote_title{
+                font-size: 0.24rem;
+                margin-top: 0.06rem;
+            }
+        }
+    }
+}
+
+    /*猜你喜欢*/
+.guess{
+    width: 100%;
+    height: auto;
+    margin-top: 0.5rem;
+
+    >.title{
+        width: 100%;
+        height: 0.8rem;
+    }
+    >.title:before{
+        display: block;
+        width: 100%;
+        border-top: 1px solid #d2d0d0;
+        content: "";
+    }
+    >.title:after{
+        display: block;
+        content: "猜你喜欢";
+        text-align: center;
+        width: 2rem;
+        height: 0.5rem;
+        line-height: 0.5rem;
+        margin: 0 auto;
+        background-color: #eee;
+        margin-top: -0.25rem;
+
+    }
+    >.guess_context{
+        width: 7.16rem;
+        height: auto;
+        margin: 0 auto;
+
+        >.guess_item{
+            width: 3.46rem;
+            height: 5.16rem;
+            float: left;
+            background-color: #fff;
+            margin-bottom: 0.16rem;
+
+            border: 1px solid #d9d9d9;
+            -webkit-border-radius: 0.25rem;
+            -moz-border-radius: 0.25rem;
+            border-radius: 0.25rem;
+
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+
+            >.guess_item_image{
+                width: 3.46rem;
+                height: 3.44rem;
+                -webkit-border-radius: 0.25rem;
+                -moz-border-radius: 0.25rem;
+                border-radius: 0.25rem;
+                border-bottom-left-radius: 0;
+                border-bottom-right-radius: 0;
+
+                background-repeat: no-repeat;
+                -webkit-background-size: contain;
+                background-size: contain;
+            }
+            >.text{
+                font-size: 0.24rem;
+                height: 0.6rem;
+                overflow: hidden;
+                padding: 0.15rem;
+            }
+            >.price{
+                font-size: 0.36rem;
+                color: #f60;
+                margin-top: 0.2rem;
+                margin-left: 0.2rem;
+            }
+
+        }
+        >.guess_item:nth-child(odd){
+            margin-right: 0.18rem;
+        }
+    }
+
+}
+
+
+
+
+
+

@@ -1,0 +1,1031 @@
+<!doctype html>
+<html style="font-size: 50px;">
+<head>
+    <title>taobao</title>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+    <!-- 禁止自动对符合电话格式的文本的格式化显示 -->
+    <meta name="format-detection" content="telephone=no">
+    <!-- 禁止自动对符合地址格式的文本的格式化显示 -->
+    <meta name="format-detection" content="address=no">
+    <!-- 视窗宽度指定为设备支持宽度，禁止缩放 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+
+    <style type="text/css">@charset "UTF-8";
+/**
+ * 1. 设置默认字体为“无衬线”字体
+ * 2. 阻止iOS下当屏幕方向改变时字体大小的改变
+ */
+html {
+  font-family: "Helvetica Neue", Helvetica, STHeiTi, "Microsoft YaHei", sans-serif;
+  /* 1 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */
+  font-size: 50px;
+  height: 100%;
+  background-color: #EEE;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  -webkit-text-size-adjust: none;
+  -webkit-font-smoothing: antialiased;
+  -webkit-box-shadow: none;
+  -webkit-border-radius: 0;
+  -webkit-appearance: none;
+  -webkit-touch-action: manipulation;
+}
+/**
+ * 重置body的margin样式
+ */
+body {
+  margin: 0;
+  font-size: 0.28rem;
+}
+/*
+ * 消除图片与父容器底部间的空隙，参考： http://jsfiddle.net/gZQRJ/165/
+ */
+img {
+  vertical-align: middle;
+}
+/* 阻止长按菜单 */
+a,
+img {
+  -webkit-touch-callout: none;
+}
+/*首页头部搜索*/
+.top-fixed {
+  height: 1rem;
+  line-height: 1rem;
+  width: 100%;
+  background-color: #ff4400;
+  display: -webkit-box;
+  /* 老版本语法: Safari,  iOS, Android browser, older WebKit browsers.  */
+  display: -moz-box;
+  /* 老版本语法: Firefox (buggy) */
+  display: -ms-flexbox;
+  /* 混合版本语法: IE 10 */
+  display: -webkit-flex;
+  /* 新版本语法： Chrome 21+ */
+  display: flex;
+  /* 新版本语法： Opera 12.1, Firefox 22+ */
+  -webkit-flex-flow: row wrap;
+  -moz-flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
+  -o-flex-flow: row wrap;
+  flex-flow: row wrap;
+  padding-right: 0.25rem;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  -o-align-items: center;
+  align-items: center;
+}
+.top-fixed .logo {
+  display: block;
+  width: 1.2rem;
+  height: 1rem;
+  text-align: center;
+  -webkit-background-size: 100%;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+.top-fixed .logo img {
+  width: 0.7rem;
+}
+.top-fixed input {
+  -moz-box-flex: 1;
+  -webkit-box-flex: 1;
+  box-flex: 1;
+  flex: 1;
+  width: 6rem;
+  font-size: 0.28rem;
+  height: 0.6rem;
+  line-height: 0.6rem;
+  border: 0;
+  outline: none;
+  color: #fff;
+  background-color: #e8512a;
+  -webkit-border-radius: 0.11rem;
+  -moz-border-radius: 0.11rem;
+  border-radius: 0.11rem;
+}
+/*首页banner*/
+.top_banner {
+  width: 100%;
+}
+.top_banner img {
+  width: 100%;
+}
+/*首页mean列表*/
+.menu_list {
+  display: block;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
+  height: 3.46rem;
+  background-color: #fff;
+  padding: 0.13rem 0;
+  padding-left: 0.25rem;
+}
+.menu_list .menu_item {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 1.775rem;
+  height: 1.63rem;
+  float: left;
+  background-repeat: no-repeat;
+  background-position: center 10%;
+  font-size: 0.24rem;
+  text-align: center;
+  line-height: 2.6rem;
+  -webkit-background-size: 55%;
+  background-size: 55%;
+}
+/*首页中间广告*/
+.ad {
+  width: 100%;
+  height: 3.6rem;
+  clear: both;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  background-color: #fff;
+  margin-top: 0.15rem;
+}
+.ad .ad_left {
+  width: 3rem;
+  height: 3.6rem;
+  float: left;
+  border-right: 1px solid #eee;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  background-repeat: no-repeat;
+  background-image: url(http://gw.alicdn.com/tps/i3/TB1ScelIXXXXXcKXpXXm_8E_XXX-450-540.jpg_q50.jpg?imgtag=avatar);
+  -webkit-background-size: contain;
+  background-size: contain;
+}
+.ad .ad_right {
+  width: 4.5rem;
+  float: right;
+}
+.ad .ad_right .ad_right_top {
+  height: 1.44rem;
+  width: auto;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  border-bottom: 1px solid #eee;
+  background-repeat: no-repeat;
+  background-image: url(http://gw.alicdn.com/tps/i2/TB1FmJxHpXXXXX7XpXX.l5FJpXX-675-216.jpg_q50.jpg);
+  -webkit-background-size: 100% 100%;
+  background-size: 100% 100%;
+}
+.ad .ad_right .ad_right_botton {
+  width: auto;
+  height: 2.16rem;
+}
+.ad .ad_right .ad_right_botton div {
+  height: 2.16rem;
+  width: 2.25rem;
+  float: left;
+  display: inline-block;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  background-repeat: no-repeat;
+  -webkit-background-size: 100% 100%;
+  background-size: 100% 100%;
+}
+/*特色市场*/
+.ts {
+  width: 100%;
+  height: auto;
+  margin-top: 0.12rem;
+  background-color: #fff;
+}
+.ts .title {
+  width: 100%;
+  height: 0.74rem;
+  line-height: 0.74rem;
+  display: flex;
+  border-bottom: 1px solid #eee;
+}
+.ts .title .context {
+  height: 0.74rem;
+  line-height: 0.74rem;
+  width: 100%;
+  font-size: 0.32rem;
+}
+.ts .title .context::before {
+  display: block;
+  height: 0.74rem;
+  line-height: 0.74rem;
+  float: left;
+  border-left: #2f5de0 solid 6px;
+  content: "特色市场";
+  padding-left: 5px;
+  margin-right: 5px;
+}
+.ts .title .context:after {
+  float: right;
+  font-size: 0.24rem;
+  line-height: 0.65rem;
+  content: "更多";
+  padding-right: 5px;
+  margin-top: 0.08rem;
+}
+.ts .title:after {
+  float: right;
+  display: block;
+  width: 15px;
+  height: auto;
+  line-height: auto;
+  content: "";
+  background-image: url(http://gw.alicdn.com/tps/i4/TB1k3OHGVXXXXaTXVXXIqztGVXX-45-45.png);
+  background-position: center center;
+  margin-right: 10px;
+  background-repeat: no-repeat;
+  -webkit-background-size: contain;
+  background-size: contain;
+}
+.ts .ts_links {
+  width: 100%;
+  height: 3.36rem;
+}
+.ts .ts_links .ts_links_left {
+  width: 3.76rem;
+  height: 3.36rem;
+  float: left;
+  border-right: 1px solid #eee;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  background-image: url(http://gw.alicdn.com/tps/i1/TB1BxL7IXXXXXaQXFXXOq2AFVXX-562-504.jpg_q50.jpg?imgtag=avatar);
+  background-repeat: no-repeat;
+  -webkit-background-size: contain;
+  background-size: contain;
+}
+.ts .ts_links .ts_links_right {
+  width: 3.74rem;
+  height: 3.36rem;
+  float: right;
+}
+.ts .ts_links .ts_links_right div {
+  width: 3.74rem;
+  height: 1.67rem;
+  background-repeat: no-repeat;
+  -webkit-background-size: contain;
+  background-size: contain;
+}
+.ts .ts_two {
+  width: 100%;
+  height: 2.2rem;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
+.ts .ts_two .ts_two_context {
+  width: 1.8rem;
+  height: 2.2rem;
+  float: left;
+  background-position: center 90%;
+  text-align: center;
+  border-left: 1px solid #eee;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  background-repeat: no-repeat;
+  -webkit-background-size: contain;
+  background-size: contain;
+}
+.ts .ts_two .ts_two_context div {
+  font-size: 0.28rem;
+  margin-top: 0.2rem;
+}
+.ts .ts_two .ts_two_context p {
+  font-size: 0.2rem;
+  margin-top: 0.01rem;
+}
+.ts .ts_three {
+  width: 100%;
+  height: 1.3rem;
+  margin-top: 0.1rem;
+}
+.ts .ts_three .ts_three_item {
+  width: 1.8rem;
+  height: 0.4rem;
+  line-height: 0.4rem;
+  float: left;
+  font-size: 0.24rem;
+  text-indent: 0.3rem;
+  border-left: 1px solid #eee;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.ts .ts_three .ts_three_item span {
+  margin-right: 0.05rem;
+}
+.ts .ts_three .ts_three_line {
+  clear: both;
+  height: 0.15rem;
+  margin-bottom: 0.15rem;
+  border-bottom: 1px solid #eee;
+}
+/*中间页广告*/
+.md_ad_1 {
+  width: 100%;
+  height: 1.5rem;
+  background-image: url(http://gw.alicdn.com/tps/i3/TB1nBggIXXXXXXzXVXXwprb_XXX-1125-225.jpg_q50.jpg);
+  background-repeat: no-repeat;
+  -webkit-background-size: contain;
+  background-size: contain;
+}
+/*热门市场*/
+.hotMarket {
+  width: 100%;
+  height: auto;
+  margin-top: 0.15rem;
+  background-color: #fff;
+}
+.hotMarket .title {
+  width: 100%;
+  height: 0.7rem;
+}
+.hotMarket .title:before {
+  display: block;
+  height: 0.7rem;
+  font-size: 0.32rem;
+  float: left;
+  line-height: 0.7rem;
+  border-left: #f60 solid 6px;
+  content: "热门市场";
+  text-indent: 5px;
+}
+.hotMarket .title:after {
+  display: block;
+  float: right;
+  height: 0.7rem;
+  line-height: 0.75rem;
+  font-size: 0.24rem;
+  content: "更多";
+  background-image: url(http://gw.alicdn.com/tps/i4/TB1k3OHGVXXXXaTXVXXIqztGVXX-45-45.png);
+  background-repeat: no-repeat;
+  -webkit-background-size: 15px 15px;
+  background-size: 15px 15px;
+  background-position: right center;
+  padding-right: 20px;
+  margin-right: 10px;
+}
+.hotMarket .hotMarket_one {
+  width: 100%;
+  height: 2.88rem;
+}
+.hotMarket .hotMarket_one > .left {
+  width: 3.76rem;
+  height: 2.88rem;
+  float: left;
+  background-image: url(http://gw.alicdn.com/tps/i4/TB1TuAyIXXXXXaTXVXXlvS.FVXX-562-261.jpg_q50.jpg?imgtag=avatar);
+  background-repeat: no-repeat;
+  -webkit-background-size: contain;
+  background-size: contain;
+  background-position: center bottom;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  border-top: 1px solid #eee;
+  border-right: 1px solid #eee;
+}
+.hotMarket .hotMarket_one > .right {
+  width: 3.74rem;
+  height: 2.88rem;
+  float: right;
+  background-image: url(http://gw.alicdn.com/tps/i3/TB1sGQxIXXXXXa2XVXXlvS.FVXX-562-261.jpg_q50.jpg?imgtag=avatar);
+  background-repeat: no-repeat;
+  -webkit-background-size: contain;
+  background-size: contain;
+  background-position: center bottom;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  border-top: 1px solid #eee;
+}
+.hotMarket .tip {
+  text-indent: 0.25rem;
+  font-size: 0.28rem;
+  margin-top: 0.25rem;
+}
+.hotMarket .pub {
+  text-indent: 0.25rem;
+  font-size: 0.24rem;
+}
+.hotMarket .hotMarket_two,
+.hotMarket .hotMarket_three {
+  width: 100%;
+  height: 2.2rem;
+  border-top: 1px solid #eee;
+}
+.hotMarket .layout > .item {
+  width: 1.8rem;
+  height: 2.2rem;
+  float: left;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  border-left: 1px solid #eee;
+  background-position: center bottom;
+  -webkit-background-size: contain;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.hotMarket .layout > .item_left {
+  border-left: 0;
+}
+/*中间页广告*/
+.md_ad_2 {
+  width: 100%;
+  height: 1.5rem;
+  background-color: #fff;
+  background-image: url(http://gw.alicdn.com/tps/i2/TB1CJEnIXXXXXb9XVXXwprb_XXX-1125-225.jpg_q50.jpg);
+  background-repeat: no-repeat;
+  -webkit-background-size: contain;
+  background-size: contain;
+}
+/*每日好店*/
+.storePromote {
+  width: 100%;
+  height: auto;
+  background-color: #fff;
+}
+.storePromote .title {
+  width: 100%;
+  height: 0.7rem;
+}
+.storePromote .title:before {
+  display: block;
+  height: 0.7rem;
+  font-size: 0.32rem;
+  float: left;
+  line-height: 0.7rem;
+  border-left: #f60 solid 6px;
+  content: "每日好店";
+  text-indent: 5px;
+}
+.storePromote .title:after {
+  display: block;
+  float: right;
+  height: 0.7rem;
+  line-height: 0.75rem;
+  font-size: 0.24rem;
+  content: "更新40个好点";
+  background-image: url(http://gw.alicdn.com/tps/i4/TB1k3OHGVXXXXaTXVXXIqztGVXX-45-45.png);
+  background-repeat: no-repeat;
+  -webkit-background-size: 15px 15px;
+  background-size: 15px 15px;
+  background-position: right center;
+  padding-right: 20px;
+  margin-right: 10px;
+}
+.storePromote .storePromote_context {
+  width: 100%;
+  height: 3.3rem;
+  border-top: 1px solid #eee;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.storePromote .storePromote_context .storePromote_left {
+  margin-left: 0.15rem;
+}
+.storePromote .storePromote_context > div {
+  width: 3.6rem;
+  height: 2.94rem;
+  float: left;
+  margin-top: 0.1rem;
+}
+.storePromote .storePromote_context > div > .storePromote_centen {
+  width: 3.56rem;
+  height: 2.4rem;
+  background-color: transparent;
+}
+.storePromote .storePromote_context > div > .storePromote_centen > .one {
+  width: 2.34rem;
+  height: 2.4rem;
+  float: left;
+  background-repeat: no-repeat;
+  -webkit-background-size: contain;
+  background-size: contain;
+}
+.storePromote .storePromote_context > div > .storePromote_centen > .two,
+.storePromote .storePromote_context > div > .storePromote_centen .three {
+  width: 1.16rem;
+  height: 1.18rem;
+  float: right;
+  background-repeat: no-repeat;
+  -webkit-background-size: contain;
+  background-size: contain;
+}
+.storePromote .storePromote_context > div > .storePromote_centen > .three {
+  margin-top: 0.01rem;
+}
+.storePromote .storePromote_context > div > .storePromote_title {
+  font-size: 0.24rem;
+  margin-top: 0.06rem;
+}
+/*猜你喜欢*/
+.guess {
+  width: 100%;
+  height: auto;
+  margin-top: 0.5rem;
+}
+.guess > .title {
+  width: 100%;
+  height: 0.8rem;
+}
+.guess > .title:before {
+  display: block;
+  width: 100%;
+  border-top: 1px solid #d2d0d0;
+  content: "";
+}
+.guess > .title:after {
+  display: block;
+  content: "猜你喜欢";
+  text-align: center;
+  width: 2rem;
+  height: 0.5rem;
+  line-height: 0.5rem;
+  margin: 0 auto;
+  background-color: #eee;
+  margin-top: -0.25rem;
+}
+.guess > .guess_context {
+  width: 7.16rem;
+  height: auto;
+  margin: 0 auto;
+}
+.guess > .guess_context > .guess_item {
+  width: 3.46rem;
+  height: 5.16rem;
+  float: left;
+  background-color: #fff;
+  margin-bottom: 0.16rem;
+  border: 1px solid #d9d9d9;
+  -webkit-border-radius: 0.25rem;
+  -moz-border-radius: 0.25rem;
+  border-radius: 0.25rem;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.guess > .guess_context > .guess_item > .guess_item_image {
+  width: 3.46rem;
+  height: 3.44rem;
+  -webkit-border-radius: 0.25rem;
+  -moz-border-radius: 0.25rem;
+  border-radius: 0.25rem;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  background-repeat: no-repeat;
+  -webkit-background-size: contain;
+  background-size: contain;
+}
+.guess > .guess_context > .guess_item > .text {
+  font-size: 0.24rem;
+  height: 0.6rem;
+  overflow: hidden;
+  padding: 0.15rem;
+}
+.guess > .guess_context > .guess_item > .price {
+  font-size: 0.36rem;
+  color: #f60;
+  margin-top: 0.2rem;
+  margin-left: 0.2rem;
+}
+.guess > .guess_context > .guess_item:nth-child(odd) {
+  margin-right: 0.18rem;
+}
+</style>
+
+    <!--[if lt IE 9]>
+    <script src="http://127.0.0.1:88/ok/taobao/dist//lib/html5shiv.min.js"></script>
+    <![endif]-->
+    <script type="text/javascript">/**
+ * Created by snow on 2015/6/16.
+ */
+
+function hasClass(obj, cls) {
+    return obj.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));
+}
+
+function addClass(obj, cls) {
+    if (!this.hasClass(obj, cls)) obj.className += " " + cls;
+}
+
+function removeClass(obj, cls) {
+    if (hasClass(obj, cls)) {
+        var reg = new RegExp('(\\s|^)' + cls + '(\\s|$)');
+        obj.className = obj.className.replace(reg, ' ');
+    }
+}
+
+function toggleClass(obj,cls){
+    if(hasClass(obj,cls)){
+        removeClass(obj, cls);
+    }else{
+        addClass(obj, cls);
+    }
+}
+</script>
+
+
+</head>
+<script>
+    function a(){
+        document.write(
+                "屏幕分辨率为："+screen.width+"*"+screen.height
+                +"<br />"+
+                "屏幕可用大小："+screen.availWidth+"*"+screen.availHeight
+                +"<br />"+
+                "网页可见区域宽："+document.body.clientWidth
+                +"<br />"+
+                "网页可见区域高："+document.body.clientHeight
+                +"<br />"+
+                "网页可见区域宽(包括边线的宽)："+document.body.offsetWidth
+                +"<br />"+
+                "网页可见区域高(包括边线的宽)："+document.body.offsetHeight
+                +"<br />"+
+                "网页正文全文宽："+document.body.scrollWidth
+                +"<br />"+
+                "网页正文全文高："+document.body.scrollHeight
+                +"<br />"+
+                "网页被卷去的高："+document.body.scrollTop
+                +"<br />"+
+                "网页被卷去的左："+document.body.scrollLeft
+                +"<br />"+
+                "网页正文部分上："+window.screenTop
+                +"<br />"+
+                "网页正文部分左："+window.screenLeft
+                +"<br />"+
+                "屏幕分辨率的高："+window.screen.height
+                +"<br />"+
+                "屏幕分辨率的宽："+window.screen.width
+                +"<br />"+
+                "屏幕可用工作区高度："+window.screen.availHeight
+                +"<br />"+
+                "屏幕可用工作区宽度："+window.screen.availWidth
+                +"<br />"+
+                        "物理像素 / 独立像素比:"+ devicePixelRatio
+        );
+    }
+    //自适应REM设置
+    !function(){
+        var isChange= false, oldScreenWidth= 375, oldRem= 50;   // 默认iPhone6为基准
+        var html= document.getElementsByTagName('html')[0];
+        var getStyle = function (element,attr) {
+            if(typeof window.getComputedStyle!='undefined'){
+                    return parseFloat(window.getComputedStyle(element,null)[attr]);
+                }else if(element.currentStyle){
+                    return parseFloat(element.currentStyle[attr]);
+                }
+        };
+        function initRem(){
+            console.log(document.body.clientWidth, getStyle(html, 'font-size'));
+            html.style.fontSize= document.body.clientWidth*oldRem/oldScreenWidth+'px';
+            oldScreenWidth= document.body.clientWidth;
+            oldRem= getStyle(html, 'font-size');
+            isChange= false;
+        }
+        document.addEventListener('DOMContentLoaded', function(){
+            initRem();
+        });
+        window.addEventListener('resize', function(){
+            if(!isChange){
+                isChange= true;
+                setTimeout(initRem, 700);
+            }
+        })
+    }()
+</script>
+<body >
+    <!-- 首页头部 -->
+    <div class="top-fixed">
+        <div class="logo"><img src="data:image/png;base64,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"></div>
+        <input type="text" value="soso" id="search">
+    </div>
+    <!-- 首页banner -->
+    <div class="top_banner">
+        <img src="//gw.alicdn.com/tps/i4/TB12agXIXXXXXXUXpXXdIns_XXX-1125-352.jpg_q50.jpg">
+    </div>
+    <!-- 首页菜单列表 -->
+    <div class="menu_list">
+        <div class="menu_item" style="background-image: url(http://gw.alicdn.com/tps/i1/TB1eSyDGFXXXXaRXVXXszjdGpXX-140-140.png?imgtag=avatar);">
+            天猫
+        </div>
+        <div class="menu_item" style="background-image: url(http://gw.alicdn.com/tps/i2/TB1mhqJGFXXXXaBXpXXszjdGpXX-140-140.png?imgtag=avatar);">
+            聚划算
+        </div>
+        <div class="menu_item" style="background-image: url(http://gw.alicdn.com/tps/i2/TB1oq4xHXXXXXbxXpXXszjdGpXX-140-140.png?imgtag=avatar);">
+            淘生活
+        </div>
+        <div class="menu_item" style="background-image: url(http://gw.alicdn.com/tps/i3/TB1QeiDGFXXXXb8XVXXszjdGpXX-140-140.png?imgtag=avatar);">
+            淘点点
+        </div>
+
+        <div class="menu_item" style="background-image: url(http://gw.alicdn.com/tps/i3/TB1pAV7HXXXXXX5aXXXszjdGpXX-140-140.png?imgtag=avatar);">
+            充值
+        </div>
+        <div class="menu_item" style="background-image: url(http://gw.alicdn.com/tps/i1/TB1z8qiHpXXXXceaXXXszjdGpXX-140-140.png?imgtag=avatar);">
+            阿里旅游
+        </div>
+        <div class="menu_item" style="background-image: url(http://gw.alicdn.com/tps/i3/TB1hW9KGFXXXXXLXpXXszjdGpXX-140-140.png?imgtag=avatar);">
+            领金币
+        </div>
+        <div class="menu_item" style="background-image: url(http://gw.alicdn.com/tps/i4/TB1Ed9LGFXXXXc3XXXXszjdGpXX-140-140.png?imgtag=avatar);">
+            类目
+        </div>
+    </div>
+
+    <!-- 首页中间广告 -->
+    <div class="ad">
+        <div class="ad_left"></div>
+        <div class="ad_right">
+            <div class="ad_right_top"></div>
+            <div class="ad_right_botton">
+                <div style="background-image: url(http://gw.alicdn.com/tps/i3/TB1YiHLIXXXXXXyXVXXg2HZ5VXX-333-324.jpg_q50.jpg?imgtag=avatar); border-right: 1px solid #eee; "></div>
+                <div style="background-image: url(http://gw.alicdn.com/tps/i1/TB1j3O0IXXXXXc4XVXXg2HZ5VXX-333-324.jpg_q50.jpg?imgtag=avatar);"></div>
+            </div>
+        </div>
+    </div>
+
+    <!--特色市场-->
+    <div class="ts">
+        <div class="title">
+            <span class="context"></span>
+        </div>
+        <div class="ts_links">
+            <div class="ts_links_left">
+            </div>
+            <div class="ts_links_right">
+                <div style="background-image: url(http://gw.alicdn.com/tps/i1/TB1NaH_IXXXXXXMXXXXq_e9FVXX-562-252.jpg_q50.jpg?imgtag=avatar);"></div>
+                <div style="border-top: 1px solid #eee;background-image: url(http://gw.alicdn.com/tps/i2/TB1tgsvIXXXXXcdXFXX7_G9FVXX-562-252.png?imgtag=avatar);"></div>
+            </div>
+        </div>
+        <div class="ts_two">
+            <div class="ts_two_context" style=" border-left: 0; margin-left: 0.14rem; background-image: url(http://gw.alicdn.com/tps/i4/TB1.iwVHpXXXXXHXFXXlLwRQpXX-270-189.jpg_q50.jpg);"><div>特色中国</div><p>三亚波罗蜜</p></div>
+            <div class="ts_two_context" style="background-image: url(http://gw.alicdn.com/tps/i3/TB1Sjy8HpXXXXbMaXXXlLwRQpXX-270-189.jpg_q50.jpg);"><div>聚名品</div><p>搭配二折起</p></div>
+            <div class="ts_two_context" style="background-image: url(http://gw.alicdn.com/tps/i1/TB1E5IhIXXXXXb.XFXXlLwRQpXX-270-189.jpg_q50.jpg);"><div>全球购</div><p>逛街超舒服</p></div>
+            <div class="ts_two_context" style=" border-right: 0; background-image: url(http://gw.alicdn.com/tps/TB1NSgJIXXXXXb1XpXXXXXXXXXX.png);"><div>免费试用</div><p>高配置本本</p></div>
+        </div>
+        <div class="ts_three">
+            <div class="ts_three_item" style="margin-left: 0.15rem; border-left: 0"><span style="color: #9766c1;">&bull;</span>天猫国际</div>
+            <div class="ts_three_item"><span style="color: #9b6cc3;">&bull;</span>丽人购</div>
+            <div class="ts_three_item"><span style="color: #29b159;">&bull;</span>喵新鲜</div>
+            <div class="ts_three_item" style="border-right: 0"><span style="color: #e90911;">&bull;</span>品牌街</div>
+
+            <div class="ts_three_line"></div>
+
+            <div class="ts_three_item" style="margin-left: 0.15rem; border-left: 0"><span style="color: #0061f0;">&bull;</span>清仓</div>
+            <div class="ts_three_item"><span style="color: #e90911;">&bull;</span>周末淘宝</div>
+            <div class="ts_three_item"><span style="color: #ffd109;">&bull;</span>淘宝众筹</div>
+            <div class="ts_three_item" style="border-right: 0"><span style="color: #ff3e00;">&bull;</span>淘宝电影</div>
+        </div>
+
+    </div>
+
+    <!--中间页广告-->
+    <div class="md_ad_1">
+    </div>
+    <!--热门市场-->
+    <div class="hotMarket">
+        <div class="title"></div>
+        <div class="hotMarket_one">
+            <div class="left">
+                <div class="tip">女装</div>
+                <div class="pub">海量新品</div>
+            </div>
+            <div class="right">
+                <div class="tip">鞋包</div>
+                <div class="pub">新款驾到！</div>
+            </div>
+        </div>
+        <div class="hotMarket_two layout">
+            <div class="item item_left" style=" margin-left: 0.15rem; background-image: url(http://gw.alicdn.com/tps/i1/TB1IiZrIXXXXXXWaXXXNyMPQpXX-270-179.jpg_q50.jpg);">
+                <div class="tip">母婴</div>
+                <div class="pub">清凉萌夏装</div>
+            </div>
+            <div class="item item_left" style="background-image: url(http://gw.alicdn.com/tps/i4/TB1fq3LIXXXXXb_XpXXlLwRQpXX-270-189.jpg_q50.jpg);">
+                <div class="tip">运动</div>
+                <div class="pub">复刻经典</div>
+            </div>
+            <div class="item" style="background-image: url(http://gw.alicdn.com/tps/i3/TB1L3Z1IXXXXXXEXXXXlLwRQpXX-270-189.jpg_q50.jpg);">
+                <div class="tip">美妆</div>
+                <div class="pub">新品免费试</div>
+            </div>
+            <div class="item" style="background-image: url(http://gw.alicdn.com/tps/i1/TB13p3RIXXXXXX.XpXXNyMPQpXX-270-179.jpg_q50.jpg);">
+                <div class="tip">烧客</div>
+                <div class="pub">百万优惠卷</div>
+            </div>
+        </div>
+
+        <div class="hotMarket_three layout">
+            <div class="item item_left" style=" margin-left: 0.15rem; background-image: url(http://gw.alicdn.com/tps/i1/TB1FAwQIXXXXXakXpXXlLwRQpXX-270-189.jpg_q50.jpg);">
+                <div class="tip">男装</div>
+                <div class="pub">男人的衣柜</div>
+            </div>
+            <div class="item item_left" style="background-image: url(http://gw.alicdn.com/tps/i2/TB1kWEWIXXXXXa6XXXXlLwRQpXX-270-189.jpg_q50.jpg);">
+                <div class="tip">家居</div>
+                <div class="pub">优质生活</div>
+            </div>
+            <div class="item" style="background-image: url(http://gw.alicdn.com/tps/i3/TB1KnkPIXXXXXXkXpXXlLwRQpXX-270-189.jpg_q50.jpg);">
+                <div class="tip">美食</div>
+                <div class="pub">龙虾半价抢</div>
+            </div>
+            <div class="item" style="background-image: url(http://gw.alicdn.com/tps/i1/TB14K7JIXXXXXXQXFXXlLwRQpXX-270-189.jpg_q50.jpg);">
+                <div class="tip">家电</div>
+                <div class="pub">大牌新首发</div>
+            </div>
+        </div>
+    </div>
+
+    <!--中间页广告-->
+    <div class="md_ad_2">
+    </div>
+
+    <!--每日好店-->
+    <div class="storePromote">
+        <div class="title"></div>
+        <div class="storePromote_context">
+            <div class="storePromote_left">
+                <div class="storePromote_centen">
+                    <div class="one" style="background-image: url(http://gw.alicdn.com/bao/uploaded///gw.alicdn.com/bao/uploaded/i1/TB1SBleFVXXXXaqXFXXXXXXXXXX_!!0-item_pic.jpg_q50.jpg);"></div>
+                    <div class="two" style="background-image: url(http://gw.alicdn.com/bao/uploaded///gw.alicdn.com/bao/uploaded/i1/T1fFm9FjBgXXXXXXXX_!!0-item_pic.jpg);"></div>
+                    <div class="three" style="background-image: url(http://gw.alicdn.com/bao/uploaded///gw.alicdn.com/bao/uploaded/i3/TB1h.QUFVXXXXbZaXXXXXXXXXXX_!!0-item_pic.jpg)"></div>
+                </div>
+                <div class="storePromote_title">熊孩子—潮妈萌娃</div>
+            </div>
+            <div class="storePromote_right">
+                <div class="storePromote_centen">
+                    <div class="one" style="background-image: url(http://gw.alicdn.com/bao/uploaded///gw.alicdn.com/bao/uploaded/i1/T18O.GFxNaXXXXXXXX_!!0-item_pic.jpg_q50.jpg);"></div>
+                    <div class="two" style="background-image: url(http://gw.alicdn.com/bao/uploaded///gw.alicdn.com/bao/uploaded/i1/TB1fO4eHFXXXXalaXXXXXXXXXXX_!!0-item_pic.jpg);"></div>
+                    <div class="three" style="background-image: url(http://gw.alicdn.com/bao/uploaded///gw.alicdn.com/bao/uploaded/i1/TB1GHAyHpXXXXbGXVXXXXXXXXXX_!!0-item_pic.jpg)"></div>
+                </div>
+                <div class="storePromote_title">熊孩子—潮妈萌娃</div>
+            </div>
+        </div>
+    </div>
+
+    <!--猜你喜欢-->
+    <div class="guess">
+        <div class="title"></div>
+        <div class="guess_context">
+            <div class="guess_item">
+                <div class="guess_item_image" style="background-image: url(http://gw.alicdn.com/bao/uploaded///img.alicdn.com/bao/uploaded/i2/TB1V0m4XpXXXXaFbXXXXXXXXXXX_!!0-item_pic.jpg_q50.jpg);"></div>
+                <div class="text">
+                    [买手推荐]果小二夏威夷果奶油口味特产坚果零食品...
+                </div>
+                <div class="price">¥35.0</div>
+            </div>
+            <div class="guess_item">
+                <div class="guess_item_image" style="background-image: url(http://gw.alicdn.com/bao/uploaded///img.alicdn.com/bao/uploaded/i2/TB1V0m4XpXXXXaFbXXXXXXXXXXX_!!0-item_pic.jpg_q50.jpg);"></div>
+                <div class="text">
+                    [买手推荐]果小二夏威夷果奶油口味特产坚果零食品...
+                </div>
+                <div class="price">¥35.0</div>
+            </div>
+
+            <div class="guess_item">
+                <div class="guess_item_image" style="background-image: url(http://gw.alicdn.com/bao/uploaded///img.alicdn.com/bao/uploaded/i2/TB1V0m4XpXXXXaFbXXXXXXXXXXX_!!0-item_pic.jpg_q50.jpg);"></div>
+                <div class="text">
+                    [买手推荐]果小二夏威夷果奶油口味特产坚果零食品...
+                </div>
+                <div class="price">¥35.0</div>
+            </div>
+            <div class="guess_item">
+                <div class="guess_item_image" style="background-image: url(http://gw.alicdn.com/bao/uploaded///img.alicdn.com/bao/uploaded/i2/TB1V0m4XpXXXXaFbXXXXXXXXXXX_!!0-item_pic.jpg_q50.jpg);"></div>
+                <div class="text">
+                    [买手推荐]果小二夏威夷果奶油口味特产坚果零食品...
+                </div>
+                <div class="price">¥35.0</div>
+            </div>
+
+        </div>
+    </div>
+
+    <!--首页搜索 模块-->
+    <div class="home_search">
+    <div class="search_title">
+        <div class="close_search"></div>
+        <div class="sraech_type">
+            <div data-typeID="0" class="search_type_item action" style="margin-left: 0.5rem;">宝贝</div>
+            <div data-typeID="1" class="search_type_item">店铺</div>
+            <div data-typeID="2" class="search_type_item">天猫</div>
+        </div>
+    </div>
+    <div class="search_context">
+
+    </div>
+</div>
+<style type="text/css">.home_search {
+  width: 100%;
+  height: 100%;
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  background-color: #eee;
+}
+.search_title {
+  width: 100%;
+  height: 1rem;
+  position: relative;
+}
+.search_title > .close_search {
+  width: 1rem;
+  height: 0.7rem;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 101;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAD0AAABACAYAAACp3n/2AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyBpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBXaW5kb3dzIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjAxNkI1RUZCMTc1RTExRTJCNDFCQzI0NzExMEUyNTU2IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjAxNkI1RUZDMTc1RTExRTJCNDFCQzI0NzExMEUyNTU2Ij4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MDE2QjVFRjkxNzVFMTFFMkI0MUJDMjQ3MTEwRTI1NTYiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6MDE2QjVFRkExNzVFMTFFMkI0MUJDMjQ3MTEwRTI1NTYiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz48GbX/AAAEm0lEQVR42uya70tbVxjHc6OJFlsH0WhqJLLo/IXVgBCNRqvo/Fn2arBXhbKxQKEvurZjL/prlPZFW/oHTAp9Mfq2pVAQhLCVlhFCGXOtmxNTcJ35UWoMa0tIa3TfJz1CmsZ7b5T1npjzwMPNzb3n5H7u85znOec5kWKx2IYOsri4SAddZ2enpNvlotcVoAjoQpHizQ+SJAlL72pLb2xsiDEtoAW0iN7C0gJapCzOxzRvMjU1taP2Ho9HBLJ0kaLRaMq/l5aWUl84HA5JA6t+isM16AHoA+hJqH+H3Tqh11mfj6DnYf3bXAQyAB/DYYY9HIkbeh96ZAfd0kv8Oa1POt7Cb33GS/S+kuU7I/QG9KttAt+B7sly7QcuoIuLi+Myl6/naPGDMsAkFlh7j55SFikFMi2CWWNj46rCLTdUgtOwmJYB1lVUVDzHuI5rbunu7u5Zk8n0r8JtZPHDCsAzcsClpaWJwcHBAD6W8ODed0dGRuaMRuMbmduKmMW/yHLNpWRhAp6YmKCX68NpgodA9mN5efmvY2NjswaDQQn8Zga4i1l471aNSkpKXhNwZWXl3zi9+k4g02pMQ9ag31ssln/Gx8fVgn/O8vC0HDB5TxrwCehyCnozkGksz6HfAjw0Ojr6O1x+TQW4F/qRHPDk5ORvZrP5KQN+yuMqi7ZYTtTU1ARVgBuVLAyvIeDlTGAel5YEfspqtYYQ3Ag8mWsHNDwoPlRXVxPwcZphb7me1nBMZ8oCgdfW1oaGh4dzAidg8hKKD2z+vpRPRYR56Hc2my1M4EVFResqUt8aAdPwoPgAfZJ3lRNMF+cIHDn2JaAVrY1grI/H4xT5T6HtoqrKCY/raTx8Uq/Xt6yvrxuU7k0mk3qv1+uA7mdDRJd3loY0UVoCcGUObUpZ7nbnHTQs3MDysGUbzWk6Oo0+3HkDzYCpAGDdcnaCwAa3lwtuexm4Sxaah5SFh/xYDTBF9L6+vj9Ugjvfg+ZkGkrANjXAWB4+qqurizQ1NYXdbvefMJTcw9M0dQZ9d3Ln3ngoK6uL2eSABwYGHtvt9jClMuiF5ubmUG9vrxpwbzq45u5N5Rsc7soBkxsTcH19fQinZ9BmFkov6WJra2tYJfg0ixfcFAYdCsBzDPgcHvxh2gu7twnucrnmFcDNbHXGxZg+IgdMAauhoSHCgP1ZPOUnAm9rawt1dXX9pfBbTtxv5qFcJAtMAQunZ7MBZ4Bfbm9vD8qBl5WVUREyqvmY7u/vn89MPbSywvebwBcA5VMRG6hsdLWjoyPkdDoXMl2drbEXPB7PPikSiaQurqyspC62tLR8aPLbgUDA7vP5PkkkEoaqqqpYT09PwGQyvWDA93PpDFATtMoKBoP7/H6/PRqNltOSc2hoaA4rsMe49iUP0DR5uKR7dweVNgAuAviX7XQI8EM4fJMRqGNQ2kJa1rzYr3u7UXeaFe1esXz99XaBmatTCjwKfche4DOW21OFQSkcDqcsvbr6dqMBCX/X79lyvZ7+36DTo3fBQBf0f06Eewv3FpYWKStfpbD/JiksLQKZSFnC0mJMC/cW7s2d/CfAAKKEwn3TTvPoAAAAAElFTkSuQmCC);
+  background-repeat: no-repeat;
+  -webkit-background-size: contain;
+  background-size: contain;
+}
+.search_title > .sraech_type {
+  width: 100%;
+  height: 0.8rem;
+  position: absolute;
+  top: 0.3rem;
+}
+.search_title > .sraech_type > .search_type_item {
+  width: 1.4rem;
+  height: 0.68rem;
+  line-height: 0.68rem;
+  font-size: 0.28rem;
+  float: left;
+  margin-right: 0.1rem;
+  text-align: center;
+  border: 1px solid #e1e1e1;
+  background-color: #eaeaea;
+}
+.search_title > .sraech_type > .action {
+  height: 0.72rem;
+  border-bottom: 0;
+  color: #f60;
+}
+.search_context {
+  width: 100%;
+  height: 100%;
+  border-top: 1px solid #d5d4d4;
+}
+</style>
+<script type="text/javascript">/**
+ * Created by snow on 2015/6/15.
+ * 首页--商品搜索
+ * depend: util
+ */
+!function(){
+    var search_ipt= document.getElementById('search');
+    var search_close_btn= document.getElementsByClassName('close_search')[0];
+    var search_content= document.getElementsByClassName('home_search')[0];
+    var search_item_btn= document.getElementsByClassName('search_type_item');
+    search_ipt.addEventListener('click', function(){
+        search_content.style.display= 'block'
+    }, false);
+    search_close_btn.addEventListener('click', function(){
+        search_content.style.display= 'none';
+    }, false);
+
+    var focusId= 0;
+    function searchItemEvent(e){
+        if(hasClass(this, 'action')){
+            return false
+        }else{
+            removeClass(search_item_btn[focusId],'action');
+            addClass(this, 'action')
+        }{
+            focusId= this.getAttribute('data-typeID');  //储存当前类型值攻下次使用
+        }
+    }
+    for(var item in search_item_btn){
+        itemElement= search_item_btn[item];
+        if(itemElement.nodeType === 1){
+            itemElement.addEventListener('click', searchItemEvent, false)
+        }
+    }
+}();</script>
+
+
+
+    <!--<script type='text/javascript' id="__bs_script__">//<![CDATA[
+    document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.2.7.10.js'><\/script>".replace("HOST", location.hostname));
+    //]]></script>-->
+</body>
+</html>

@@ -1,0 +1,38 @@
+{
+    "res": {
+        "lib/html5shiv.min.js": {
+            "uri": "/static/lib/html5shiv.min.js",
+            "type": "js"
+        },
+        "lib/mod.js": {
+            "uri": "/static/lib/mod.js",
+            "type": "js"
+        },
+        "modules/common/base.less": {
+            "uri": "/static/modules/common/base.css",
+            "type": "css"
+        },
+        "common": {
+            "uri": "/static/modules/common/common.js",
+            "type": "js"
+        },
+        "jquery": {
+            "uri": "/static/modules/jquery/jquery.js",
+            "type": "js"
+        },
+        "underscore": {
+            "uri": "/static/modules/underscore/underscore.js",
+            "type": "js"
+        },
+        "vendor/backbone.localStorage": {
+            "uri": "/static/modules/vendor/backbone.localStorage.js",
+            "type": "js",
+            "deps": [
+                "underscore",
+                "jquery",
+                "backbone"
+            ]
+        }
+    },
+    "pkg": {}
+}

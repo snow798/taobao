@@ -1,0 +1,597 @@
+@charset "UTF-8";
+/**
+ * 1. 设置默认字体为“无衬线”字体
+ * 2. 阻止iOS下当屏幕方向改变时字体大小的改变
+ */
+html {
+  font-family: "Helvetica Neue", Helvetica, STHeiTi, "Microsoft YaHei", sans-serif;
+  /* 1 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */
+  font-size: 50px;
+  height: 100%;
+  background-color: #EEE;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  -webkit-text-size-adjust: none;
+  -webkit-font-smoothing: antialiased;
+  -webkit-box-shadow: none;
+  -webkit-border-radius: 0;
+  -webkit-appearance: none;
+  -webkit-touch-action: manipulation;
+}
+/**
+ * 重置body的margin样式
+ */
+body {
+  margin: 0;
+  font-size: 0.28rem;
+}
+/*
+ * 消除图片与父容器底部间的空隙，参考： http://jsfiddle.net/gZQRJ/165/
+ */
+img {
+  vertical-align: middle;
+}
+/* 阻止长按菜单 */
+a,
+img {
+  -webkit-touch-callout: none;
+}
+/*首页头部搜索*/
+.top-fixed {
+  height: 1rem;
+  line-height: 1rem;
+  width: 100%;
+  background-color: #ff4400;
+  display: -webkit-box;
+  /* 老版本语法: Safari,  iOS, Android browser, older WebKit browsers.  */
+  display: -moz-box;
+  /* 老版本语法: Firefox (buggy) */
+  display: -ms-flexbox;
+  /* 混合版本语法: IE 10 */
+  display: -webkit-flex;
+  /* 新版本语法： Chrome 21+ */
+  display: flex;
+  /* 新版本语法： Opera 12.1, Firefox 22+ */
+  -webkit-flex-flow: row wrap;
+  -moz-flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
+  -o-flex-flow: row wrap;
+  flex-flow: row wrap;
+  padding-right: 0.25rem;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  -o-align-items: center;
+  align-items: center;
+}
+.top-fixed .logo {
+  display: block;
+  width: 1.2rem;
+  height: 1rem;
+  text-align: center;
+  -webkit-background-size: 100%;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+.top-fixed .logo img {
+  width: 0.7rem;
+}
+.top-fixed input {
+  -moz-box-flex: 1;
+  -webkit-box-flex: 1;
+  box-flex: 1;
+  flex: 1;
+  width: 6rem;
+  font-size: 0.28rem;
+  height: 0.6rem;
+  line-height: 0.6rem;
+  border: 0;
+  outline: none;
+  color: #fff;
+  background-color: #e8512a;
+  -webkit-border-radius: 0.11rem;
+  -moz-border-radius: 0.11rem;
+  border-radius: 0.11rem;
+}
+/*首页banner*/
+.top_banner {
+  width: 100%;
+}
+.top_banner img {
+  width: 100%;
+}
+/*首页mean列表*/
+.menu_list {
+  display: block;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
+  height: 3.46rem;
+  background-color: #fff;
+  padding: 0.13rem 0;
+  padding-left: 0.25rem;
+}
+.menu_list .menu_item {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 1.775rem;
+  height: 1.63rem;
+  float: left;
+  background-repeat: no-repeat;
+  background-position: center 10%;
+  font-size: 0.24rem;
+  text-align: center;
+  line-height: 2.6rem;
+  -webkit-background-size: 55%;
+  background-size: 55%;
+}
+/*首页中间广告*/
+.ad {
+  width: 100%;
+  height: 3.6rem;
+  clear: both;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  background-color: #fff;
+  margin-top: 0.15rem;
+}
+.ad .ad_left {
+  width: 3rem;
+  height: 3.6rem;
+  float: left;
+  border-right: 1px solid #eee;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  background-repeat: no-repeat;
+  background-image: url(http://gw.alicdn.com/tps/i3/TB1ScelIXXXXXcKXpXXm_8E_XXX-450-540.jpg_q50.jpg?imgtag=avatar);
+  -webkit-background-size: contain;
+  background-size: contain;
+}
+.ad .ad_right {
+  width: 4.5rem;
+  float: right;
+}
+.ad .ad_right .ad_right_top {
+  height: 1.44rem;
+  width: auto;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  border-bottom: 1px solid #eee;
+  background-repeat: no-repeat;
+  background-image: url(http://gw.alicdn.com/tps/i2/TB1FmJxHpXXXXX7XpXX.l5FJpXX-675-216.jpg_q50.jpg);
+  -webkit-background-size: 100% 100%;
+  background-size: 100% 100%;
+}
+.ad .ad_right .ad_right_botton {
+  width: auto;
+  height: 2.16rem;
+}
+.ad .ad_right .ad_right_botton div {
+  height: 2.16rem;
+  width: 2.25rem;
+  float: left;
+  display: inline-block;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  background-repeat: no-repeat;
+  -webkit-background-size: 100% 100%;
+  background-size: 100% 100%;
+}
+/*特色市场*/
+.ts {
+  width: 100%;
+  height: auto;
+  margin-top: 0.12rem;
+  background-color: #fff;
+}
+.ts .title {
+  width: 100%;
+  height: 0.74rem;
+  line-height: 0.74rem;
+  display: flex;
+  border-bottom: 1px solid #eee;
+}
+.ts .title .context {
+  height: 0.74rem;
+  line-height: 0.74rem;
+  width: 100%;
+  font-size: 0.32rem;
+}
+.ts .title .context::before {
+  display: block;
+  height: 0.74rem;
+  line-height: 0.74rem;
+  float: left;
+  border-left: #2f5de0 solid 6px;
+  content: "特色市场";
+  padding-left: 5px;
+  margin-right: 5px;
+}
+.ts .title .context:after {
+  float: right;
+  font-size: 0.24rem;
+  line-height: 0.65rem;
+  content: "更多";
+  padding-right: 5px;
+  margin-top: 0.08rem;
+}
+.ts .title:after {
+  float: right;
+  display: block;
+  width: 15px;
+  height: auto;
+  line-height: auto;
+  content: "";
+  background-image: url(http://gw.alicdn.com/tps/i4/TB1k3OHGVXXXXaTXVXXIqztGVXX-45-45.png);
+  background-position: center center;
+  margin-right: 10px;
+  background-repeat: no-repeat;
+  -webkit-background-size: contain;
+  background-size: contain;
+}
+.ts .ts_links {
+  width: 100%;
+  height: 3.36rem;
+}
+.ts .ts_links .ts_links_left {
+  width: 3.76rem;
+  height: 3.36rem;
+  float: left;
+  border-right: 1px solid #eee;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  background-image: url(http://gw.alicdn.com/tps/i1/TB1BxL7IXXXXXaQXFXXOq2AFVXX-562-504.jpg_q50.jpg?imgtag=avatar);
+  background-repeat: no-repeat;
+  -webkit-background-size: contain;
+  background-size: contain;
+}
+.ts .ts_links .ts_links_right {
+  width: 3.74rem;
+  height: 3.36rem;
+  float: right;
+}
+.ts .ts_links .ts_links_right div {
+  width: 3.74rem;
+  height: 1.67rem;
+  background-repeat: no-repeat;
+  -webkit-background-size: contain;
+  background-size: contain;
+}
+.ts .ts_two {
+  width: 100%;
+  height: 2.2rem;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
+.ts .ts_two .ts_two_context {
+  width: 1.8rem;
+  height: 2.2rem;
+  float: left;
+  background-position: center 90%;
+  text-align: center;
+  border-left: 1px solid #eee;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  background-repeat: no-repeat;
+  -webkit-background-size: contain;
+  background-size: contain;
+}
+.ts .ts_two .ts_two_context div {
+  font-size: 0.28rem;
+  margin-top: 0.2rem;
+}
+.ts .ts_two .ts_two_context p {
+  font-size: 0.2rem;
+  margin-top: 0.01rem;
+}
+.ts .ts_three {
+  width: 100%;
+  height: 1.3rem;
+  margin-top: 0.1rem;
+}
+.ts .ts_three .ts_three_item {
+  width: 1.8rem;
+  height: 0.4rem;
+  line-height: 0.4rem;
+  float: left;
+  font-size: 0.24rem;
+  text-indent: 0.3rem;
+  border-left: 1px solid #eee;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.ts .ts_three .ts_three_item span {
+  margin-right: 0.05rem;
+}
+.ts .ts_three .ts_three_line {
+  clear: both;
+  height: 0.15rem;
+  margin-bottom: 0.15rem;
+  border-bottom: 1px solid #eee;
+}
+/*中间页广告*/
+.md_ad_1 {
+  width: 100%;
+  height: 1.5rem;
+  background-image: url(http://gw.alicdn.com/tps/i3/TB1nBggIXXXXXXzXVXXwprb_XXX-1125-225.jpg_q50.jpg);
+  background-repeat: no-repeat;
+  -webkit-background-size: contain;
+  background-size: contain;
+}
+/*热门市场*/
+.hotMarket {
+  width: 100%;
+  height: auto;
+  margin-top: 0.15rem;
+  background-color: #fff;
+}
+.hotMarket .title {
+  width: 100%;
+  height: 0.7rem;
+}
+.hotMarket .title:before {
+  display: block;
+  height: 0.7rem;
+  font-size: 0.32rem;
+  float: left;
+  line-height: 0.7rem;
+  border-left: #f60 solid 6px;
+  content: "热门市场";
+  text-indent: 5px;
+}
+.hotMarket .title:after {
+  display: block;
+  float: right;
+  height: 0.7rem;
+  line-height: 0.75rem;
+  font-size: 0.24rem;
+  content: "更多";
+  background-image: url(http://gw.alicdn.com/tps/i4/TB1k3OHGVXXXXaTXVXXIqztGVXX-45-45.png);
+  background-repeat: no-repeat;
+  -webkit-background-size: 15px 15px;
+  background-size: 15px 15px;
+  background-position: right center;
+  padding-right: 20px;
+  margin-right: 10px;
+}
+.hotMarket .hotMarket_one {
+  width: 100%;
+  height: 2.88rem;
+}
+.hotMarket .hotMarket_one > .left {
+  width: 3.76rem;
+  height: 2.88rem;
+  float: left;
+  background-image: url(http://gw.alicdn.com/tps/i4/TB1TuAyIXXXXXaTXVXXlvS.FVXX-562-261.jpg_q50.jpg?imgtag=avatar);
+  background-repeat: no-repeat;
+  -webkit-background-size: contain;
+  background-size: contain;
+  background-position: center bottom;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  border-top: 1px solid #eee;
+  border-right: 1px solid #eee;
+}
+.hotMarket .hotMarket_one > .right {
+  width: 3.74rem;
+  height: 2.88rem;
+  float: right;
+  background-image: url(http://gw.alicdn.com/tps/i3/TB1sGQxIXXXXXa2XVXXlvS.FVXX-562-261.jpg_q50.jpg?imgtag=avatar);
+  background-repeat: no-repeat;
+  -webkit-background-size: contain;
+  background-size: contain;
+  background-position: center bottom;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  border-top: 1px solid #eee;
+}
+.hotMarket .tip {
+  text-indent: 0.25rem;
+  font-size: 0.28rem;
+  margin-top: 0.25rem;
+}
+.hotMarket .pub {
+  text-indent: 0.25rem;
+  font-size: 0.24rem;
+}
+.hotMarket .hotMarket_two,
+.hotMarket .hotMarket_three {
+  width: 100%;
+  height: 2.2rem;
+  border-top: 1px solid #eee;
+}
+.hotMarket .layout > .item {
+  width: 1.8rem;
+  height: 2.2rem;
+  float: left;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  border-left: 1px solid #eee;
+  background-position: center bottom;
+  -webkit-background-size: contain;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.hotMarket .layout > .item_left {
+  border-left: 0;
+}
+/*中间页广告*/
+.md_ad_2 {
+  width: 100%;
+  height: 1.5rem;
+  background-color: #fff;
+  background-image: url(http://gw.alicdn.com/tps/i2/TB1CJEnIXXXXXb9XVXXwprb_XXX-1125-225.jpg_q50.jpg);
+  background-repeat: no-repeat;
+  -webkit-background-size: contain;
+  background-size: contain;
+}
+/*每日好店*/
+.storePromote {
+  width: 100%;
+  height: auto;
+  background-color: #fff;
+}
+.storePromote .title {
+  width: 100%;
+  height: 0.7rem;
+}
+.storePromote .title:before {
+  display: block;
+  height: 0.7rem;
+  font-size: 0.32rem;
+  float: left;
+  line-height: 0.7rem;
+  border-left: #f60 solid 6px;
+  content: "每日好店";
+  text-indent: 5px;
+}
+.storePromote .title:after {
+  display: block;
+  float: right;
+  height: 0.7rem;
+  line-height: 0.75rem;
+  font-size: 0.24rem;
+  content: "更新40个好点";
+  background-image: url(http://gw.alicdn.com/tps/i4/TB1k3OHGVXXXXaTXVXXIqztGVXX-45-45.png);
+  background-repeat: no-repeat;
+  -webkit-background-size: 15px 15px;
+  background-size: 15px 15px;
+  background-position: right center;
+  padding-right: 20px;
+  margin-right: 10px;
+}
+.storePromote .storePromote_context {
+  width: 100%;
+  height: 3.3rem;
+  border-top: 1px solid #eee;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.storePromote .storePromote_context .storePromote_left {
+  margin-left: 0.15rem;
+}
+.storePromote .storePromote_context > div {
+  width: 3.6rem;
+  height: 2.94rem;
+  float: left;
+  margin-top: 0.1rem;
+}
+.storePromote .storePromote_context > div > .storePromote_centen {
+  width: 3.56rem;
+  height: 2.4rem;
+  background-color: transparent;
+}
+.storePromote .storePromote_context > div > .storePromote_centen > .one {
+  width: 2.34rem;
+  height: 2.4rem;
+  float: left;
+  background-repeat: no-repeat;
+  -webkit-background-size: contain;
+  background-size: contain;
+}
+.storePromote .storePromote_context > div > .storePromote_centen > .two,
+.storePromote .storePromote_context > div > .storePromote_centen .three {
+  width: 1.16rem;
+  height: 1.18rem;
+  float: right;
+  background-repeat: no-repeat;
+  -webkit-background-size: contain;
+  background-size: contain;
+}
+.storePromote .storePromote_context > div > .storePromote_centen > .three {
+  margin-top: 0.01rem;
+}
+.storePromote .storePromote_context > div > .storePromote_title {
+  font-size: 0.24rem;
+  margin-top: 0.06rem;
+}
+/*猜你喜欢*/
+.guess {
+  width: 100%;
+  height: auto;
+  margin-top: 0.5rem;
+}
+.guess > .title {
+  width: 100%;
+  height: 0.8rem;
+}
+.guess > .title:before {
+  display: block;
+  width: 100%;
+  border-top: 1px solid #d2d0d0;
+  content: "";
+}
+.guess > .title:after {
+  display: block;
+  content: "猜你喜欢";
+  text-align: center;
+  width: 2rem;
+  height: 0.5rem;
+  line-height: 0.5rem;
+  margin: 0 auto;
+  background-color: #eee;
+  margin-top: -0.25rem;
+}
+.guess > .guess_context {
+  width: 7.16rem;
+  height: auto;
+  margin: 0 auto;
+}
+.guess > .guess_context > .guess_item {
+  width: 3.46rem;
+  height: 5.16rem;
+  float: left;
+  background-color: #fff;
+  margin-bottom: 0.16rem;
+  border: 1px solid #d9d9d9;
+  -webkit-border-radius: 0.25rem;
+  -moz-border-radius: 0.25rem;
+  border-radius: 0.25rem;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.guess > .guess_context > .guess_item > .guess_item_image {
+  width: 3.46rem;
+  height: 3.44rem;
+  -webkit-border-radius: 0.25rem;
+  -moz-border-radius: 0.25rem;
+  border-radius: 0.25rem;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  background-repeat: no-repeat;
+  -webkit-background-size: contain;
+  background-size: contain;
+}
+.guess > .guess_context > .guess_item > .text {
+  font-size: 0.24rem;
+  height: 0.6rem;
+  overflow: hidden;
+  padding: 0.15rem;
+}
+.guess > .guess_context > .guess_item > .price {
+  font-size: 0.36rem;
+  color: #f60;
+  margin-top: 0.2rem;
+  margin-left: 0.2rem;
+}
+.guess > .guess_context > .guess_item:nth-child(odd) {
+  margin-right: 0.18rem;
+}
