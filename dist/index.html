@@ -685,7 +685,7 @@ function toggleClass(obj,cls){
     }
     //自适应REM设置
     !function(){
-        var isChange= false, oldScreenWidth= 375, oldRem= 50;   // 默认iPhone6为基准
+        var isChange= false, oldScreenWidth= 375, oldRem= 50;   // 默认iPhone6为基准[屏款375，默认根字体大小50px]
         var html= document.getElementsByTagName('html')[0];
         var getStyle = function (element,attr) {
             if(typeof window.getComputedStyle!='undefined'){
@@ -928,7 +928,8 @@ function toggleClass(obj,cls){
         </div>
     </div>
     <div class="search_context">
-
+        <input type="text">
+        <button type="button"></button>
     </div>
 </div>
 <style type="text/css">.home_search {
@@ -983,7 +984,34 @@ function toggleClass(obj,cls){
 .search_context {
   width: 100%;
   height: 100%;
+  padding-top: 0.35rem;
   border-top: 1px solid #d5d4d4;
+}
+.search_context input {
+  width: 6.36rem;
+  height: 0.68rem;
+  float: left;
+  margin-left: 0.25rem;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  outline: 0;
+  border-top: 1px solid #bbb;
+  border-left: 1px solid #ddd;
+}
+.search_context button {
+  width: 0.8rem;
+  height: 0.68rem;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  border-bottom: 1px solid #bbb;
+  outline: 0;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABGCAMAAABsQOMZAAAAA3NCSVQICAjb4U/gAAAAk1BMVEX////////7+/v5+fn39/f19fXz8/Px8fHv7+/t7e3r6+vp6enn5+fl5eXj4+Ph4eHe3t7d3d3Z2dnX19fV1dXT09PR0dHPz8/MzMzJycnHx8fFxcXDw8PBwcG/v7+9vb27u7u5ubm3t7e1tbWzs7OysrKvr6+urq6qqqqpqamnp6elpaWjo6OhoaGgoKCdnZ2ZmZmTwfAzAAAAMXRSTlMA////////////////////////////////////////////////////////////////6hDi1gAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNui8sowAAAICSURBVFiF7ZXbcqowFECbAAmIqIDcr62tWEXp/3/dyYbTFrnJpOlTWTwIS7ISMszwZArm6ReCkkD+alAWyBJcgktQUFDd58V7VRTRrIkfBvXnjy9uPvlpkCRV9dE6SutnwdWp6hLMCSojaJder6rSsbsbpoLk2CTOoaGpmpndmkuPO5jcgNLFqIGktbhuOINGeWWcViyFJbY7EkYOmOuBM5iVjIvGcp9Gxg64cnTTJ4P6BbAQklsSZyBzrqB3Zrze99g0YM+UJ5i9MywkDektT/B4YlBEOtoFbXMEaXFiB+4uUDHB+/LQkOmgWjAOqDdyA97vzTNjhUfGG+r5LXgXD4xoBckQhzeG3NM2aBsPDgHGg8krw+jpsNY8Qe/ACJSOVV9AKxJHcPMCrDvWBRmh/lY8DpL4mRGr97PkILeou/BZwV0OBO2inoJKMKI8QRpkQPj91GZaGxONb+FUkKhRWuNuYEHaLmgu03h8fdNBosXJf0L/65QR6ZxBRYviQSaKk0EiK350T9D8hKPFOkhHUdDaD7+xCfaas0AfGfEgSAnC6s5hBd8xDQm+V05T9Fd8QUpl1AIrBO+DGk/lDLLnluovM8YSgTVjuyla3MEOBFs+sCeCgp/FNRYVpBSvHddAAoO03lRZYJCyN0ga/IM3OMpfDaoCWYJLcAnODOaCER78BySX0fdnIPFLAAAAAElFTkSuQmCC);
+  background-repeat: no-repeat;
+  -webkit-background-size: contain;
+  background-size: contain;
 }
 </style>
 <script type="text/javascript">/**
@@ -1022,6 +1050,138 @@ function toggleClass(obj,cls){
     }
 }();</script>
 
+
+
+    <!--首页菜单-->
+    <div class="home_menu">
+    <div class="menu_mask"></div>
+    <div class="menu_centent">
+        <ul class="circle">
+            <li class="more">
+                <a data-url="//h5.m.taobao.com/moreapp/index.html?pds=apply%23h%23taojia"></a>
+                <span class="bg"></span>
+            </li>
+        </ul>
+        <div class="home_logo"></div>
+    </div>
+    <div class="menu_btn">
+        <ul>
+            <li></li>
+        </ul>
+    </div>
+</div>
+<style type="text/css">.home_menu {
+  position: fixed;
+  width: 1.2rem;
+  height: 1.2rem;
+  bottom: 1.5rem;
+  left: 0.3rem;
+  z-index: 1000;
+}
+.home_menu .menu_mask {
+  display: none;
+}
+.home_menu .menu_centent {
+  width: 3.92rem;
+  height: 3.92rem;
+  position: absolute;
+  top: -3.5rem;
+  left: 0.48rem;
+  background: transparent;
+  z-index: 1010;
+}
+.home_menu .menu_centent .circle {
+  width: 3.92rem;
+  height: 3.92rem;
+  position: relative;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background: url(//assets.alicdn.com/mw/base/styles/component/taoplus/images/sprite1.png) no-repeat;
+  background-position: 0 0;
+  -webkit-background-size: 3.9rem;
+  background-size: 3.9rem;
+}
+.home_menu .circle .more {
+  width: 1.5rem;
+  height: 1.3rem;
+  position: absolute;
+  right: 0.4rem;
+  bottom: 0.16rem;
+}
+.home_menu .circle .more a {
+  display: block;
+  width: 0.7rem;
+  height: 0.4rem;
+  background-color: transparent;
+  margin-top: 0.35rem;
+  margin-left: 0.4rem;
+  z-index: 1030;
+}
+.home_menu .circle .more span {
+  width: 1.4rem;
+  height: 1.22rem;
+  display: none;
+  position: absolute;
+  top: 0;
+  z-index: 1020;
+  pointer-events: none;
+  background-image: url(http://assets.alicdn.com/mw/base/styles/component/taoplus/images/sprite2.png);
+  -webkit-background-size: 3.9rem;
+  background-size: 3.9rem;
+  background-position: 0 0;
+}
+.home_menu .menu_btn {
+  position: absolute;
+  width: 0.96rem;
+  height: 0.96rem;
+}
+.home_menu .menu_btn ul {
+  list-style: none;
+  padding: 0;
+  padding-top: 0.15rem;
+  padding-left: 0.05rem;
+  margin: 0;
+  width: 0.96rem;
+  height: 0.96rem;
+  background: url(//assets.alicdn.com/mw/base/styles/component/taoplus/images/sprite1.png) no-repeat;
+  background-position: 0 -4rem;
+  -webkit-background-size: 3.9rem;
+  background-size: 3.9rem;
+}
+.home_menu .menu_btn ul li {
+  width: 0.71rem;
+  height: 0.71rem;
+  margin: 0 auto;
+  background: url(//assets.alicdn.com/mw/base/styles/component/taoplus/images/sprite1.png) no-repeat;
+  background-position: -2.2rem -4.02rem;
+  -webkit-background-size: 3.9rem;
+  background-size: 3.9rem;
+}
+</style>
+<script type="text/javascript">/**
+ * Created by snow on 2015/6/18.
+ */
+!function(){
+    hoverBtn= document.querySelectorAll('.circle a');
+    for( var i in hoverBtn){
+        var ele= hoverBtn[i];
+        if(ele.nodeType === 1){
+            ele.addEventListener('mouseover', function(e){
+                var bg= this.nextElementSibling;
+                if(bg.nodeType === 1){
+                    bg.style.display= 'block';
+                }
+            }, true);
+            ele.addEventListener('mouseout', function(e){
+                var bg= this.nextElementSibling;
+                if(bg.nodeType === 1){
+                    bg.style.display= 'none';
+                }
+            }, false)
+        }
+    }
+}();</script>
 
 
     <!--<script type='text/javascript' id="__bs_script__">//<![CDATA[

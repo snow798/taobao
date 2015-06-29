@@ -16,6 +16,14 @@
             "uri": "http://127.0.0.1:88/ok/taobao/dist//modules/common/common.js",
             "type": "js"
         },
+        "modules/home_menu/index.js": {
+            "uri": "http://127.0.0.1:88/ok/taobao/dist//modules/home_menu/index.js",
+            "type": "js"
+        },
+        "modules/home_menu/index.less": {
+            "uri": "http://127.0.0.1:88/ok/taobao/dist//modules/home_menu/index.less",
+            "type": "less"
+        },
         "modules/home_search/index.js": {
             "uri": "http://127.0.0.1:88/ok/taobao/dist//modules/home_search/index.js",
             "type": "js"
