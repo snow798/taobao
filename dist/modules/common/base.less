@@ -52,6 +52,9 @@ img {
   width: 100%;
   background: #ccc;
   overflow: hidden;
+  -webkit-backface-visibility: hidden;
+  -webkit-transform-style: preserve-3d;
+  -webkit-transform: translate3d(0, 0, 0);
 }
 #scroller {
   position: absolute;
@@ -73,6 +76,9 @@ img {
   -ms-text-size-adjust: none;
   -o-text-size-adjust: none;
   text-size-adjust: none;
+  -webkit-backface-visibility: hidden;
+  -webkit-transform-style: preserve-3d;
+  -webkit-transform: translate3d(0, 0, 0);
 }
 /*首页头部搜索*/
 .top-fixed {
@@ -147,8 +153,6 @@ img {
   position: relative;
   color: #fff;
   text-align: center;
-  -webkit-backface-visibility: hidden;
-  -webkit-transform-style: preserve-3d;
 }
 .top_banner .swiper-wrapper {
   width: 100%;
