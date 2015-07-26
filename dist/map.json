@@ -1,51 +1,106 @@
 {
     "res": {
+        "lib/callbacks.js": {
+            "uri": "/ok/taobao/dist/lib/callbacks.js",
+            "type": "js"
+        },
+        "lib/deferred.js": {
+            "uri": "/ok/taobao/dist/lib/deferred.js",
+            "type": "js"
+        },
         "lib/html5shiv.min.js": {
-            "uri": "http://127.0.0.1:88/ok/taobao/dist//lib/html5shiv.min.js",
+            "uri": "/ok/taobao/dist/lib/html5shiv.min.js",
+            "type": "js"
+        },
+        "lib/iscroll/iscroll-infinite.js": {
+            "uri": "/ok/taobao/dist/lib/iscroll/iscroll-infinite.js",
+            "type": "js"
+        },
+        "lib/iscroll/iscroll-lite.js": {
+            "uri": "/ok/taobao/dist/lib/iscroll/iscroll-lite.js",
+            "type": "js"
+        },
+        "lib/iscroll/iscroll-probe.js": {
+            "uri": "/ok/taobao/dist/lib/iscroll/iscroll-probe.js",
+            "type": "js"
+        },
+        "lib/iscroll/iscroll-zoom.js": {
+            "uri": "/ok/taobao/dist/lib/iscroll/iscroll-zoom.js",
+            "type": "js"
+        },
+        "lib/iscroll/iscroll.js": {
+            "uri": "/ok/taobao/dist/lib/iscroll/iscroll.js",
             "type": "js"
         },
         "lib/mod.js": {
-            "uri": "http://127.0.0.1:88/ok/taobao/dist//lib/mod.js",
+            "uri": "/ok/taobao/dist/lib/mod.js",
+            "type": "js"
+        },
+        "lib/swiper/idangerous.swiper.css": {
+            "uri": "/ok/taobao/dist/lib/swiper/idangerous.swiper.css",
+            "type": "css"
+        },
+        "lib/swiper/idangerous.swiper.js": {
+            "uri": "/ok/taobao/dist/lib/swiper/idangerous.swiper.js",
+            "type": "js",
+            "deps": [
+                "lib/swiper/idangerous.swiper.css"
+            ]
+        },
+        "lib/swiper/idangerous.swiper.min.js": {
+            "uri": "/ok/taobao/dist/lib/swiper/idangerous.swiper.min.js",
+            "type": "js"
+        },
+        "lib/zepto.min.js": {
+            "uri": "/ok/taobao/dist/lib/zepto.min.js",
             "type": "js"
         },
         "modules/common/base.less": {
-            "uri": "http://127.0.0.1:88/ok/taobao/dist//modules/common/base.less",
+            "uri": "/ok/taobao/dist/modules/common/base.less",
             "type": "less"
         },
         "modules/common/common.js": {
-            "uri": "http://127.0.0.1:88/ok/taobao/dist//modules/common/common.js",
+            "uri": "/ok/taobao/dist/modules/common/common.js",
+            "type": "js"
+        },
+        "modules/common/data.js": {
+            "uri": "/ok/taobao/dist/modules/common/data.js",
             "type": "js"
         },
         "modules/home_menu/index.js": {
-            "uri": "http://127.0.0.1:88/ok/taobao/dist//modules/home_menu/index.js",
+            "uri": "/ok/taobao/dist/modules/home_menu/index.js",
             "type": "js"
         },
         "modules/home_menu/index.less": {
-            "uri": "http://127.0.0.1:88/ok/taobao/dist//modules/home_menu/index.less",
+            "uri": "/ok/taobao/dist/modules/home_menu/index.less",
             "type": "less"
         },
         "modules/home_search/index.js": {
-            "uri": "http://127.0.0.1:88/ok/taobao/dist//modules/home_search/index.js",
+            "uri": "/ok/taobao/dist/modules/home_search/index.js",
             "type": "js"
         },
         "modules/home_search/index.less": {
-            "uri": "http://127.0.0.1:88/ok/taobao/dist//modules/home_search/index.less",
+            "uri": "/ok/taobao/dist/modules/home_search/index.less",
             "type": "less"
         },
+        "modules/index.js": {
+            "uri": "/ok/taobao/dist/modules/index.js",
+            "type": "js"
+        },
         "modules/jquery/jquery.js": {
-            "uri": "http://127.0.0.1:88/ok/taobao/dist//modules/jquery/jquery.js",
+            "uri": "/ok/taobao/dist/modules/jquery/jquery.js",
             "type": "js"
         },
         "modules/underscore/underscore.js": {
-            "uri": "http://127.0.0.1:88/ok/taobao/dist//modules/underscore/underscore.js",
+            "uri": "/ok/taobao/dist/modules/underscore/underscore.js",
             "type": "js"
         },
         "modules/util/index.js": {
-            "uri": "http://127.0.0.1:88/ok/taobao/dist//modules/util/index.js",
+            "uri": "/ok/taobao/dist/modules/util/index.js",
             "type": "js"
         },
         "modules/vendor/backbone.localStorage.js": {
-            "uri": "http://127.0.0.1:88/ok/taobao/dist//modules/vendor/backbone.localStorage.js",
+            "uri": "/ok/taobao/dist/modules/vendor/backbone.localStorage.js",
             "type": "js",
             "deps": [
                 "underscore",

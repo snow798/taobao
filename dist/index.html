@@ -12,6 +12,7 @@
     <meta name="format-detection" content="address=no">
     <!-- 视窗宽度指定为设备支持宽度，禁止缩放 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="/ok/taobao/dist/lib/swiper/idangerous.swiper.css">
 
     <style type="text/css">@charset "UTF-8";
 /**
@@ -37,9 +38,15 @@ html {
 /**
  * 重置body的margin样式
  */
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
 body {
   margin: 0;
   font-size: 0.28rem;
+  overflow: hidden;
 }
 /*
  * 消除图片与父容器底部间的空隙，参考： http://jsfiddle.net/gZQRJ/165/
@@ -52,11 +59,44 @@ a,
 img {
   -webkit-touch-callout: none;
 }
+#wrapper {
+  position: absolute;
+  z-index: 1;
+  top: 1rem;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #ccc;
+  overflow: hidden;
+}
+#scroller {
+  position: absolute;
+  z-index: 1;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  width: 100%;
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -o-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-text-size-adjust: none;
+  -moz-text-size-adjust: none;
+  -ms-text-size-adjust: none;
+  -o-text-size-adjust: none;
+  text-size-adjust: none;
+}
 /*首页头部搜索*/
 .top-fixed {
   height: 1rem;
   line-height: 1rem;
   width: 100%;
+  position: absolute;
+  z-index: 2;
   background-color: #ff4400;
   display: -webkit-box;
   /* 老版本语法: Safari,  iOS, Android browser, older WebKit browsers.  */
@@ -115,9 +155,67 @@ img {
 /*首页banner*/
 .top_banner {
   width: 100%;
+  height: 2.34rem;
 }
-.top_banner img {
+.top_banner .swiper-container {
   width: 100%;
+  height: 2.34rem;
+  position: relative;
+  color: #fff;
+  text-align: center;
+  -webkit-backface-visibility: hidden;
+  -webkit-transform-style: preserve-3d;
+}
+.top_banner .swiper-wrapper {
+  width: 100%;
+  height: 100%;
+}
+.top_banner .swiper-slide {
+  width: 100%;
+  height: 100%;
+}
+.top_banner .swiper-slide a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.top_banner .swiper-slide a img {
+  width: 100%;
+  height: 100%;
+}
+.top_banner .pagination {
+  position: absolute;
+  bottom: 0.1rem;
+  right: 0.1rem;
+  z-index: 1;
+}
+.top_banner .swiper-pagination-switch {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 8px;
+  background: #fff;
+  margin-right: 5px;
+  opacity: 0.5;
+  border: 1px solid #fff;
+  cursor: pointer;
+}
+.top_banner .swiper-active-switch {
+  background: #f60;
+}
+.top_banner .swiper-dynamic-links {
+  text-align: center;
+}
+.top_banner .swiper-dynamic-links a {
+  display: inline-block;
+  padding: 5px;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+  margin: 5px;
+  font-size: 12px;
+  text-decoration: none;
+  color: #333;
+  background: #eee;
 }
 /*首页mean列表*/
 .menu_list {
@@ -597,7 +695,7 @@ img {
 }
 .guess > .guess_context > .guess_item > .text {
   font-size: 0.24rem;
-  height: 0.6rem;
+  height: 0.8rem;
   overflow: hidden;
   padding: 0.15rem;
 }
@@ -613,34 +711,85 @@ img {
 </style>
 
     <!--[if lt IE 9]>
-    <script src="http://127.0.0.1:88/ok/taobao/dist//lib/html5shiv.min.js"></script>
+    <script src="/ok/taobao/dist/lib/html5shiv.min.js"></script>
     <![endif]-->
+    <script src="/ok/taobao/dist/lib/zepto.min.js"></script>
+    <script src="/ok/taobao/dist/lib/callbacks.js"></script>
+    <script src="/ok/taobao/dist/lib/deferred.js"></script>
+    <script src="/ok/taobao/dist/lib/iscroll/iscroll.js"></script>
+    <script src="/ok/taobao/dist/lib/swiper/idangerous.swiper.min.js"></script>
+    <script src="/ok/taobao/dist/modules/common/data.js"></script>
     <script type="text/javascript">/**
  * Created by snow on 2015/6/16.
  */
-
-function hasClass(obj, cls) {
-    return obj.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));
-}
-
-function addClass(obj, cls) {
-    if (!this.hasClass(obj, cls)) obj.className += " " + cls;
-}
-
-function removeClass(obj, cls) {
-    if (hasClass(obj, cls)) {
-        var reg = new RegExp('(\\s|^)' + cls + '(\\s|$)');
-        obj.className = obj.className.replace(reg, ' ');
-    }
-}
-
-function toggleClass(obj,cls){
-    if(hasClass(obj,cls)){
-        removeClass(obj, cls);
+function extend(pa, ch){
+    if(pa instanceof Object && ch instanceof Object){
+        for(var i in ch){
+            pa[i]= ch[i]
+        }
+        return pa;
     }else{
-        addClass(obj, cls);
+        return false
     }
 }
+var hasClass, addClass, removeClass;  //基本样式操作直接暴露到全局
+function classReg( className ) {
+    return new RegExp("(^|\\s+)" + className + "(\\s+|$)");
+}
+if ( 'classList' in document.documentElement ) {
+    hasClass = function( elem, c ) {
+        return elem.classList.contains( c );
+    };
+    addClass = function( elem, c ) {
+        elem.classList.add( c );
+    };
+    removeClass = function( elem, c ) {
+        elem.classList.remove( c );
+    };
+}
+else {
+    hasClass = function( elem, c ) {
+        return classReg( c ).test( elem.className );
+    };
+    addClass = function( elem, c ) {
+        if ( !hasClass( elem, c ) ) {
+            elem.className = elem.className + ' ' + c;
+        }
+    };
+    removeClass = function( elem, c ) {
+        elem.className = elem.className.replace( classReg( c ), ' ' );
+    };
+}
+function toggleClass( elem, c ) {
+    var fn = hasClass( elem, c ) ? removeClass : addClass;
+    fn( elem, c );
+}
+
+function loadJs(url, fn){
+    var head= document.head;
+    var ele= document.createElement('script');
+    ele.src= url;
+    head.appendChild(ele);
+    if(fn instanceof Function){
+        ele.addEventListener('load', function(){
+            fn()
+        }, false)
+    }
+}
+
+var util = {
+    hasClass: hasClass,
+    addClass: addClass,
+    removeClass: removeClass,
+    toggleClass: toggleClass,
+    has: hasClass,
+    add: addClass,
+    remove: removeClass,
+    toggle: toggleClass,
+    loadJs: loadJs
+};
+
+window.util= util;
 </script>
 
 
@@ -712,209 +861,224 @@ function toggleClass(obj,cls){
         })
     }()
 </script>
-<body >
+<body>
     <!-- 首页头部 -->
     <div class="top-fixed">
         <div class="logo"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAD8AAAAwCAYAAACmCaIKAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAABZNJREFUeNrUWg9k3Fccv+QqhHCEIxzh5rgZmUynjE246YybUjKdK5UZJZXpZDY3q1an0wmp1E1rtMYmlWqlQqqVSaVamVRnlWplEqlGp3Gxk0itVo1fv9/6/rrn9f35vrt3ueuHD3e/e+/97vve9+97ryEIgkiVMAlcA14mLkXqDSi8gTHgEPBO8D9uAvuBTYZ+qeBlzAMHgFlgs+W9m0LTj1uBxUAPnJC4pu9AYMa/wESthW/QqH0r8CYwaVGcK8APgBvCs2bgAxpDh7PATyxjdwDb6D+kgS30PSG0eQT8iz7/DbwLvA5crkTtvw34yEp9P7O0fwpMK7RsL/AnMqunQWWYAxaAHeWo/ZjDi45Iff+0tP8ZuA2YB44D14PqYhTY6SL8uMPgh4V+2aA+gZq0X5Zzi8GWs8yAcVX4fNhzMFoA/gG8TUS7fkKfQ7/QDnwH2CP5AxFR4BD5jn02m28B3mfM6JTQJ+dhhR4Ch2ks12jQRCZoQz8n1KFTmjUMconygHCyHlQgMOYSGU8hzOas/wMmbcIjo8A+WuEiaQMKvdMxrpv+yCBwB02gD+Gj5O1NKHCE5/BdD6EpzBx9JTB9lnctYrvGCh1SHDhCDkUHTEROAn+1jPWNR0f5u+X35POkyZCbT1icDtr7jEWl+6ldwhLPC55T1zaGpnXqOk9Rg6LGEdkER/QK7YcN7WYsRVI5jDGE36WK833ALkGtJ4DfEUO0WdTqGKl6hMbKWUxn2pO6/wA8z2yblGes3aCeaAatUvucIh/4hTxuGHvnNzGT63VY+UHZ4Z2i6kmF7cBr0qqfAb4OPECODWf9U6HKOwpMReoTcXnVHzJmbJHayloTl2w3U4Mc3mXlJ+R6PgY8QnZvAubY7wu1tIwU2XFc8duXQj3QDcxb3nWZNIsD3CpbITlWLW1vmXZxbKVpMUwTFZ52lhEBIvTdhuEqefs5XZKDldTbwC/IlnVe+pwiwcHvJUX7fUIEqAe0mDI8dFrHyaFd1LTZCtwhPSvR1taZOhbcKrxo3x8BD2l+V9X9WHPvprhbj4Kztq5lqjK1aalNvoY7Ni7eftW1sFF53abIq4moq/D36BRGxMorKvzGFscOzYoMcEH6vkzRglsSt1valGjSOXBZiMeuNr9TYTu5CqovH3E+rSi9OTZ/30Xt0bYPajKwzUYX1Q2LwDng/jLGeOIi/FfATunZbSmhmcUAYmDMg+BTxLxwnNZDJumCx1zht2v25C9ImvGGaaYVzrIc3NL4jm7HcdY4wqcM+3RnpcPNqMVx+cBvmud9juOs2IRP0CWDVs0K3HWI92uehL+heb6N0m0uSo2WMDRhCEUnXwod9rBWKbCOmDH83usw1rJOeHRM4wYbXlFsRZfIrnVA7cmUIXCMhEJnOma5M5BzcKrKlUevOUpqpMOPipXekMxAhRGyzbSD8Fg4naBDSU4S1sNOiBQHlNcsycG6YiMz5FHHQuSfMguYSUPfOea+fZecFU0zOg0Ysq0EHVZUC6t08wPfNWJox6ks2xoFZzRJ59wRS6w+Zqn9D1Uho8N64Wvga8DT9Oyqoh3eK/iYEXnuPR+TVOQOc+ZPMHP2godVXqcT4V3COYC82xxqw5Bwz4dzXD4YntKec7jakXQoWj6kgw4uiiRsnk5+uYVWs3Q8PcaQIx1eRcOsrJ+KlhaDqmBo21OGyobXxxLCgceSUH5yyt8chdIbhkwRo1PBEqXCSPU5fhD37ZPUOavZzHyTEcqqsuMCLApZ5gJNwiMhs8ww9gXCiX7vRZhWqFK3wmZGa3hTstNTpJiXT5pUSc552q4+Lpy5fV/D7aaMhzFQprci8uVnxqwP1viO7HgFq33J5Dwbqnjl3BeayIl1CJspHfQ8JeTyS5Rn4AbLdSp9jXdwnwkwAGXl2KVI+BEMAAAAAElFTkSuQmCC"></div>
         <input type="text" value="soso" id="search">
     </div>
-    <!-- 首页banner -->
-    <div class="top_banner">
-        <img src="//gw.alicdn.com/tps/i4/TB12agXIXXXXXXUXpXXdIns_XXX-1125-352.jpg_q50.jpg">
-    </div>
-    <!-- 首页菜单列表 -->
-    <div class="menu_list">
-        <div class="menu_item" style="background-image: url(http://gw.alicdn.com/tps/i1/TB1eSyDGFXXXXaRXVXXszjdGpXX-140-140.png?imgtag=avatar);">
-            天猫
+    <!--下拉刷新-->
+    <div id="wrapper">
+    <div id="scroller">
+        <section>
+        <!-- 首页banner -->
+        <div class="top_banner">
+            <div class="swiper-container">
+                <!--<div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <a href="#" data-href="" dat-type="">
+                            <img src="">
+                        </a>
+                    </div>
+                </div>-->
+                <div class="pagination"></div>
+            </div>
         </div>
-        <div class="menu_item" style="background-image: url(http://gw.alicdn.com/tps/i2/TB1mhqJGFXXXXaBXpXXszjdGpXX-140-140.png?imgtag=avatar);">
-            聚划算
-        </div>
-        <div class="menu_item" style="background-image: url(http://gw.alicdn.com/tps/i2/TB1oq4xHXXXXXbxXpXXszjdGpXX-140-140.png?imgtag=avatar);">
-            淘生活
-        </div>
-        <div class="menu_item" style="background-image: url(http://gw.alicdn.com/tps/i3/TB1QeiDGFXXXXb8XVXXszjdGpXX-140-140.png?imgtag=avatar);">
-            淘点点
+        <!-- 首页菜单列表 -->
+        <div class="menu_list">
+            <!--<div class="menu_item" style="background-image: url(http://gw.alicdn.com/tps/i1/TB1eSyDGFXXXXaRXVXXszjdGpXX-140-140.png?imgtag=avatar);">
+                天猫
+            </div>
+            <div class="menu_item" style="background-image: url(http://gw.alicdn.com/tps/i2/TB1mhqJGFXXXXaBXpXXszjdGpXX-140-140.png?imgtag=avatar);">
+                聚划算
+            </div>
+            <div class="menu_item" style="background-image: url(http://gw.alicdn.com/tps/i2/TB1oq4xHXXXXXbxXpXXszjdGpXX-140-140.png?imgtag=avatar);">
+                淘生活
+            </div>
+            <div class="menu_item" style="background-image: url(http://gw.alicdn.com/tps/i3/TB1QeiDGFXXXXb8XVXXszjdGpXX-140-140.png?imgtag=avatar);">
+                淘点点
+            </div>
+
+            <div class="menu_item" style="background-image: url(http://gw.alicdn.com/tps/i3/TB1pAV7HXXXXXX5aXXXszjdGpXX-140-140.png?imgtag=avatar);">
+                充值
+            </div>
+            <div class="menu_item" style="background-image: url(http://gw.alicdn.com/tps/i1/TB1z8qiHpXXXXceaXXXszjdGpXX-140-140.png?imgtag=avatar);">
+                阿里旅游
+            </div>
+            <div class="menu_item" style="background-image: url(http://gw.alicdn.com/tps/i3/TB1hW9KGFXXXXXLXpXXszjdGpXX-140-140.png?imgtag=avatar);">
+                领金币
+            </div>
+            <div class="menu_item" style="background-image: url(http://gw.alicdn.com/tps/i4/TB1Ed9LGFXXXXc3XXXXszjdGpXX-140-140.png?imgtag=avatar);">
+                类目
+            </div>-->
         </div>
 
-        <div class="menu_item" style="background-image: url(http://gw.alicdn.com/tps/i3/TB1pAV7HXXXXXX5aXXXszjdGpXX-140-140.png?imgtag=avatar);">
-            充值
-        </div>
-        <div class="menu_item" style="background-image: url(http://gw.alicdn.com/tps/i1/TB1z8qiHpXXXXceaXXXszjdGpXX-140-140.png?imgtag=avatar);">
-            阿里旅游
-        </div>
-        <div class="menu_item" style="background-image: url(http://gw.alicdn.com/tps/i3/TB1hW9KGFXXXXXLXpXXszjdGpXX-140-140.png?imgtag=avatar);">
-            领金币
-        </div>
-        <div class="menu_item" style="background-image: url(http://gw.alicdn.com/tps/i4/TB1Ed9LGFXXXXc3XXXXszjdGpXX-140-140.png?imgtag=avatar);">
-            类目
-        </div>
-    </div>
-
-    <!-- 首页中间广告 -->
-    <div class="ad">
-        <div class="ad_left"></div>
-        <div class="ad_right">
-            <div class="ad_right_top"></div>
-            <div class="ad_right_botton">
-                <div style="background-image: url(http://gw.alicdn.com/tps/i3/TB1YiHLIXXXXXXyXVXXg2HZ5VXX-333-324.jpg_q50.jpg?imgtag=avatar); border-right: 1px solid #eee; "></div>
-                <div style="background-image: url(http://gw.alicdn.com/tps/i1/TB1j3O0IXXXXXc4XVXXg2HZ5VXX-333-324.jpg_q50.jpg?imgtag=avatar);"></div>
-            </div>
-        </div>
-    </div>
-
-    <!--特色市场-->
-    <div class="ts">
-        <div class="title">
-            <span class="context"></span>
-        </div>
-        <div class="ts_links">
-            <div class="ts_links_left">
-            </div>
-            <div class="ts_links_right">
-                <div style="background-image: url(http://gw.alicdn.com/tps/i1/TB1NaH_IXXXXXXMXXXXq_e9FVXX-562-252.jpg_q50.jpg?imgtag=avatar);"></div>
-                <div style="border-top: 1px solid #eee;background-image: url(http://gw.alicdn.com/tps/i2/TB1tgsvIXXXXXcdXFXX7_G9FVXX-562-252.png?imgtag=avatar);"></div>
-            </div>
-        </div>
-        <div class="ts_two">
-            <div class="ts_two_context" style=" border-left: 0; margin-left: 0.14rem; background-image: url(http://gw.alicdn.com/tps/i4/TB1.iwVHpXXXXXHXFXXlLwRQpXX-270-189.jpg_q50.jpg);"><div>特色中国</div><p>三亚波罗蜜</p></div>
-            <div class="ts_two_context" style="background-image: url(http://gw.alicdn.com/tps/i3/TB1Sjy8HpXXXXbMaXXXlLwRQpXX-270-189.jpg_q50.jpg);"><div>聚名品</div><p>搭配二折起</p></div>
-            <div class="ts_two_context" style="background-image: url(http://gw.alicdn.com/tps/i1/TB1E5IhIXXXXXb.XFXXlLwRQpXX-270-189.jpg_q50.jpg);"><div>全球购</div><p>逛街超舒服</p></div>
-            <div class="ts_two_context" style=" border-right: 0; background-image: url(http://gw.alicdn.com/tps/TB1NSgJIXXXXXb1XpXXXXXXXXXX.png);"><div>免费试用</div><p>高配置本本</p></div>
-        </div>
-        <div class="ts_three">
-            <div class="ts_three_item" style="margin-left: 0.15rem; border-left: 0"><span style="color: #9766c1;">&bull;</span>天猫国际</div>
-            <div class="ts_three_item"><span style="color: #9b6cc3;">&bull;</span>丽人购</div>
-            <div class="ts_three_item"><span style="color: #29b159;">&bull;</span>喵新鲜</div>
-            <div class="ts_three_item" style="border-right: 0"><span style="color: #e90911;">&bull;</span>品牌街</div>
-
-            <div class="ts_three_line"></div>
-
-            <div class="ts_three_item" style="margin-left: 0.15rem; border-left: 0"><span style="color: #0061f0;">&bull;</span>清仓</div>
-            <div class="ts_three_item"><span style="color: #e90911;">&bull;</span>周末淘宝</div>
-            <div class="ts_three_item"><span style="color: #ffd109;">&bull;</span>淘宝众筹</div>
-            <div class="ts_three_item" style="border-right: 0"><span style="color: #ff3e00;">&bull;</span>淘宝电影</div>
-        </div>
-
-    </div>
-
-    <!--中间页广告-->
-    <div class="md_ad_1">
-    </div>
-    <!--热门市场-->
-    <div class="hotMarket">
-        <div class="title"></div>
-        <div class="hotMarket_one">
-            <div class="left">
-                <div class="tip">女装</div>
-                <div class="pub">海量新品</div>
-            </div>
-            <div class="right">
-                <div class="tip">鞋包</div>
-                <div class="pub">新款驾到！</div>
-            </div>
-        </div>
-        <div class="hotMarket_two layout">
-            <div class="item item_left" style=" margin-left: 0.15rem; background-image: url(http://gw.alicdn.com/tps/i1/TB1IiZrIXXXXXXWaXXXNyMPQpXX-270-179.jpg_q50.jpg);">
-                <div class="tip">母婴</div>
-                <div class="pub">清凉萌夏装</div>
-            </div>
-            <div class="item item_left" style="background-image: url(http://gw.alicdn.com/tps/i4/TB1fq3LIXXXXXb_XpXXlLwRQpXX-270-189.jpg_q50.jpg);">
-                <div class="tip">运动</div>
-                <div class="pub">复刻经典</div>
-            </div>
-            <div class="item" style="background-image: url(http://gw.alicdn.com/tps/i3/TB1L3Z1IXXXXXXEXXXXlLwRQpXX-270-189.jpg_q50.jpg);">
-                <div class="tip">美妆</div>
-                <div class="pub">新品免费试</div>
-            </div>
-            <div class="item" style="background-image: url(http://gw.alicdn.com/tps/i1/TB13p3RIXXXXXX.XpXXNyMPQpXX-270-179.jpg_q50.jpg);">
-                <div class="tip">烧客</div>
-                <div class="pub">百万优惠卷</div>
-            </div>
-        </div>
-
-        <div class="hotMarket_three layout">
-            <div class="item item_left" style=" margin-left: 0.15rem; background-image: url(http://gw.alicdn.com/tps/i1/TB1FAwQIXXXXXakXpXXlLwRQpXX-270-189.jpg_q50.jpg);">
-                <div class="tip">男装</div>
-                <div class="pub">男人的衣柜</div>
-            </div>
-            <div class="item item_left" style="background-image: url(http://gw.alicdn.com/tps/i2/TB1kWEWIXXXXXa6XXXXlLwRQpXX-270-189.jpg_q50.jpg);">
-                <div class="tip">家居</div>
-                <div class="pub">优质生活</div>
-            </div>
-            <div class="item" style="background-image: url(http://gw.alicdn.com/tps/i3/TB1KnkPIXXXXXXkXpXXlLwRQpXX-270-189.jpg_q50.jpg);">
-                <div class="tip">美食</div>
-                <div class="pub">龙虾半价抢</div>
-            </div>
-            <div class="item" style="background-image: url(http://gw.alicdn.com/tps/i1/TB14K7JIXXXXXXQXFXXlLwRQpXX-270-189.jpg_q50.jpg);">
-                <div class="tip">家电</div>
-                <div class="pub">大牌新首发</div>
-            </div>
-        </div>
-    </div>
-
-    <!--中间页广告-->
-    <div class="md_ad_2">
-    </div>
-
-    <!--每日好店-->
-    <div class="storePromote">
-        <div class="title"></div>
-        <div class="storePromote_context">
-            <div class="storePromote_left">
-                <div class="storePromote_centen">
-                    <div class="one" style="background-image: url(http://gw.alicdn.com/bao/uploaded///gw.alicdn.com/bao/uploaded/i1/TB1SBleFVXXXXaqXFXXXXXXXXXX_!!0-item_pic.jpg_q50.jpg);"></div>
-                    <div class="two" style="background-image: url(http://gw.alicdn.com/bao/uploaded///gw.alicdn.com/bao/uploaded/i1/T1fFm9FjBgXXXXXXXX_!!0-item_pic.jpg);"></div>
-                    <div class="three" style="background-image: url(http://gw.alicdn.com/bao/uploaded///gw.alicdn.com/bao/uploaded/i3/TB1h.QUFVXXXXbZaXXXXXXXXXXX_!!0-item_pic.jpg)"></div>
+        <!-- 首页中间广告 -->
+        <div class="ad">
+            <!--<div class="ad_left"></div>-->
+            <!--<div class="ad_right">
+                <div class="ad_right_top"></div>
+                <div class="ad_right_botton">
+                    <div style="background-image: url(http://gw.alicdn.com/tps/i3/TB1YiHLIXXXXXXyXVXXg2HZ5VXX-333-324.jpg_q50.jpg?imgtag=avatar); border-right: 1px solid #eee; "></div>
+                    <div style="background-image: url(http://gw.alicdn.com/tps/i1/TB1j3O0IXXXXXc4XVXXg2HZ5VXX-333-324.jpg_q50.jpg?imgtag=avatar);"></div>
                 </div>
-                <div class="storePromote_title">熊孩子—潮妈萌娃</div>
-            </div>
-            <div class="storePromote_right">
-                <div class="storePromote_centen">
-                    <div class="one" style="background-image: url(http://gw.alicdn.com/bao/uploaded///gw.alicdn.com/bao/uploaded/i1/T18O.GFxNaXXXXXXXX_!!0-item_pic.jpg_q50.jpg);"></div>
-                    <div class="two" style="background-image: url(http://gw.alicdn.com/bao/uploaded///gw.alicdn.com/bao/uploaded/i1/TB1fO4eHFXXXXalaXXXXXXXXXXX_!!0-item_pic.jpg);"></div>
-                    <div class="three" style="background-image: url(http://gw.alicdn.com/bao/uploaded///gw.alicdn.com/bao/uploaded/i1/TB1GHAyHpXXXXbGXVXXXXXXXXXX_!!0-item_pic.jpg)"></div>
+            </div>-->
+        </div>
+
+        <!--特色市场-->
+        <div class="ts">
+            <!--<div class="title">
+                <span class="context"></span>
+            </div>-->
+            <!--<div class="ts_links">
+                <div class="ts_links_left"></div>
+                <div class="ts_links_right">
+                    <div style="background-image: url(http://gw.alicdn.com/tps/i1/TB1NaH_IXXXXXXMXXXXq_e9FVXX-562-252.jpg_q50.jpg?imgtag=avatar);"></div>
+                    <div style="border-top: 1px solid #eee;background-image: url(http://gw.alicdn.com/tps/i2/TB1tgsvIXXXXXcdXFXX7_G9FVXX-562-252.png?imgtag=avatar);"></div>
                 </div>
-                <div class="storePromote_title">熊孩子—潮妈萌娃</div>
+            </div>-->
+            <!--<div class="ts_two">
+                <div class="ts_two_context" style=" border-left: 0; margin-left: 0.14rem; background-image: url(http://gw.alicdn.com/tps/i4/TB1.iwVHpXXXXXHXFXXlLwRQpXX-270-189.jpg_q50.jpg);"><div>特色中国</div><p>三亚波罗蜜</p></div>
+                <div class="ts_two_context" style="background-image: url(http://gw.alicdn.com/tps/i3/TB1Sjy8HpXXXXbMaXXXlLwRQpXX-270-189.jpg_q50.jpg);"><div>聚名品</div><p>搭配二折起</p></div>
+                <div class="ts_two_context" style="background-image: url(http://gw.alicdn.com/tps/i1/TB1E5IhIXXXXXb.XFXXlLwRQpXX-270-189.jpg_q50.jpg);"><div>全球购</div><p>逛街超舒服</p></div>
+                <div class="ts_two_context" style=" border-right: 0; background-image: url(http://gw.alicdn.com/tps/TB1NSgJIXXXXXb1XpXXXXXXXXXX.png);"><div>免费试用</div><p>高配置本本</p></div>
+            </div>-->
+            <!--<div class="ts_three">
+                <div class="ts_three_item" style="margin-left: 0.15rem; border-left: 0"><span style="color: #9766c1;">&bull;</span>天猫国际</div>
+                <div class="ts_three_item"><span style="color: #9b6cc3;">&bull;</span>丽人购</div>
+                <div class="ts_three_item"><span style="color: #29b159;">&bull;</span>喵新鲜</div>
+                <div class="ts_three_item" style="border-right: 0"><span style="color: #e90911;">&bull;</span>品牌街</div>
+
+                <div class="ts_three_line"></div>
+
+                <div class="ts_three_item" style="margin-left: 0.15rem; border-left: 0"><span style="color: #0061f0;">&bull;</span>清仓</div>
+                <div class="ts_three_item"><span style="color: #e90911;">&bull;</span>周末淘宝</div>
+                <div class="ts_three_item"><span style="color: #ffd109;">&bull;</span>淘宝众筹</div>
+                <div class="ts_three_item" style="border-right: 0"><span style="color: #ff3e00;">&bull;</span>淘宝电影</div>
+            </div>-->
+
+        </div>
+
+        <!--中间页广告-->
+        <div class="md_ad_1">
+        </div>
+        <!--热门市场-->
+        <div class="hotMarket">
+            <!--<div class="title"></div>
+            <div class="hotMarket_one">
+                <div class="left">
+                    <div class="tip">女装</div>
+                    <div class="pub">海量新品</div>
+                </div>
+                <div class="right">
+                    <div class="tip">鞋包</div>
+                    <div class="pub">新款驾到！</div>
+                </div>
+            </div>
+            <div class="hotMarket_two layout">
+                <div class="item item_left" style=" margin-left: 0.15rem; background-image: url(http://gw.alicdn.com/tps/i1/TB1IiZrIXXXXXXWaXXXNyMPQpXX-270-179.jpg_q50.jpg);">
+                    <div class="tip">母婴</div>
+                    <div class="pub">清凉萌夏装</div>
+                </div>
+                <div class="item item_left" style="background-image: url(http://gw.alicdn.com/tps/i4/TB1fq3LIXXXXXb_XpXXlLwRQpXX-270-189.jpg_q50.jpg);">
+                    <div class="tip">运动</div>
+                    <div class="pub">复刻经典</div>
+                </div>
+                <div class="item" style="background-image: url(http://gw.alicdn.com/tps/i3/TB1L3Z1IXXXXXXEXXXXlLwRQpXX-270-189.jpg_q50.jpg);">
+                    <div class="tip">美妆</div>
+                    <div class="pub">新品免费试</div>
+                </div>
+                <div class="item" style="background-image: url(http://gw.alicdn.com/tps/i1/TB13p3RIXXXXXX.XpXXNyMPQpXX-270-179.jpg_q50.jpg);">
+                    <div class="tip">烧客</div>
+                    <div class="pub">百万优惠卷</div>
+                </div>
+            </div>
+
+            <div class="hotMarket_three layout">
+                <div class="item item_left" style=" margin-left: 0.15rem; background-image: url(http://gw.alicdn.com/tps/i1/TB1FAwQIXXXXXakXpXXlLwRQpXX-270-189.jpg_q50.jpg);">
+                    <div class="tip">男装</div>
+                    <div class="pub">男人的衣柜</div>
+                </div>
+                <div class="item item_left" style="background-image: url(http://gw.alicdn.com/tps/i2/TB1kWEWIXXXXXa6XXXXlLwRQpXX-270-189.jpg_q50.jpg);">
+                    <div class="tip">家居</div>
+                    <div class="pub">优质生活</div>
+                </div>
+                <div class="item" style="background-image: url(http://gw.alicdn.com/tps/i3/TB1KnkPIXXXXXXkXpXXlLwRQpXX-270-189.jpg_q50.jpg);">
+                    <div class="tip">美食</div>
+                    <div class="pub">龙虾半价抢</div>
+                </div>
+                <div class="item" style="background-image: url(http://gw.alicdn.com/tps/i1/TB14K7JIXXXXXXQXFXXlLwRQpXX-270-189.jpg_q50.jpg);">
+                    <div class="tip">家电</div>
+                    <div class="pub">大牌新首发</div>
+                </div>
+            </div>-->
+        </div>
+
+        <!--中间页广告-->
+        <div class="md_ad_2">
+        </div>
+
+        <!--每日好店-->
+        <div class="storePromote">
+            <div class="title"></div>
+            <div class="storePromote_context">
+                <div class="storePromote_left">
+                    <div class="storePromote_centen">
+                        <div class="one" style="background-image: url(http://gw.alicdn.com/bao/uploaded///gw.alicdn.com/bao/uploaded/i1/TB1SBleFVXXXXaqXFXXXXXXXXXX_!!0-item_pic.jpg_q50.jpg);"></div>
+                        <div class="two" style="background-image: url(http://gw.alicdn.com/bao/uploaded///gw.alicdn.com/bao/uploaded/i1/T1fFm9FjBgXXXXXXXX_!!0-item_pic.jpg);"></div>
+                        <div class="three" style="background-image: url(http://gw.alicdn.com/bao/uploaded///gw.alicdn.com/bao/uploaded/i3/TB1h.QUFVXXXXbZaXXXXXXXXXXX_!!0-item_pic.jpg)"></div>
+                    </div>
+                    <div class="storePromote_title">熊孩子—潮妈萌娃</div>
+                </div>
+                <div class="storePromote_right">
+                    <div class="storePromote_centen">
+                        <div class="one" style="background-image: url(http://gw.alicdn.com/bao/uploaded///gw.alicdn.com/bao/uploaded/i1/T18O.GFxNaXXXXXXXX_!!0-item_pic.jpg_q50.jpg);"></div>
+                        <div class="two" style="background-image: url(http://gw.alicdn.com/bao/uploaded///gw.alicdn.com/bao/uploaded/i1/TB1fO4eHFXXXXalaXXXXXXXXXXX_!!0-item_pic.jpg);"></div>
+                        <div class="three" style="background-image: url(http://gw.alicdn.com/bao/uploaded///gw.alicdn.com/bao/uploaded/i1/TB1GHAyHpXXXXbGXVXXXXXXXXXX_!!0-item_pic.jpg)"></div>
+                    </div>
+                    <div class="storePromote_title">熊孩子—潮妈萌娃</div>
+                </div>
             </div>
         </div>
+
+        <!--猜你喜欢-->
+        <div class="guess">
+            <div class="title"></div>
+            <div class="guess_context" style="height: 247.68rem;">
+                <!--<div class="guess_item">
+                    <div class="guess_item_image" style="background-image: url(http://gw.alicdn.com/bao/uploaded///img.alicdn.com/bao/uploaded/i2/TB1V0m4XpXXXXaFbXXXXXXXXXXX_!!0-item_pic.jpg_q50.jpg);"></div>
+                    <div class="text">
+                        [买手推荐]果小二夏威夷果奶油口味特产坚果零食品...
+                    </div>
+                    <div class="price">¥35.0</div>
+                </div>
+                <div class="guess_item">
+                    <div class="guess_item_image" style="background-image: url(http://gw.alicdn.com/bao/uploaded///img.alicdn.com/bao/uploaded/i2/TB1V0m4XpXXXXaFbXXXXXXXXXXX_!!0-item_pic.jpg_q50.jpg);"></div>
+                    <div class="text">
+                        [买手推荐]果小二夏威夷果奶油口味特产坚果零食品...
+                    </div>
+                    <div class="price">¥35.0</div>
+                </div>
+
+                <div class="guess_item">
+                    <div class="guess_item_image" style="background-image: url(http://gw.alicdn.com/bao/uploaded///img.alicdn.com/bao/uploaded/i2/TB1V0m4XpXXXXaFbXXXXXXXXXXX_!!0-item_pic.jpg_q50.jpg);"></div>
+                    <div class="text">
+                        [买手推荐]果小二夏威夷果奶油口味特产坚果零食品...
+                    </div>
+                    <div class="price">¥35.0</div>
+                </div>
+                <div class="guess_item">
+                    <div class="guess_item_image" style="background-image: url(http://gw.alicdn.com/bao/uploaded///img.alicdn.com/bao/uploaded/i2/TB1V0m4XpXXXXaFbXXXXXXXXXXX_!!0-item_pic.jpg_q50.jpg);"></div>
+                    <div class="text">
+                        [买手推荐]果小二夏威夷果奶油口味特产坚果零食品...
+                    </div>
+                    <div class="price">¥35.0</div>
+                </div>-->
+
+            </div>
+        </div>
+        </section>
     </div>
-
-    <!--猜你喜欢-->
-    <div class="guess">
-        <div class="title"></div>
-        <div class="guess_context">
-            <div class="guess_item">
-                <div class="guess_item_image" style="background-image: url(http://gw.alicdn.com/bao/uploaded///img.alicdn.com/bao/uploaded/i2/TB1V0m4XpXXXXaFbXXXXXXXXXXX_!!0-item_pic.jpg_q50.jpg);"></div>
-                <div class="text">
-                    [买手推荐]果小二夏威夷果奶油口味特产坚果零食品...
-                </div>
-                <div class="price">¥35.0</div>
-            </div>
-            <div class="guess_item">
-                <div class="guess_item_image" style="background-image: url(http://gw.alicdn.com/bao/uploaded///img.alicdn.com/bao/uploaded/i2/TB1V0m4XpXXXXaFbXXXXXXXXXXX_!!0-item_pic.jpg_q50.jpg);"></div>
-                <div class="text">
-                    [买手推荐]果小二夏威夷果奶油口味特产坚果零食品...
-                </div>
-                <div class="price">¥35.0</div>
-            </div>
-
-            <div class="guess_item">
-                <div class="guess_item_image" style="background-image: url(http://gw.alicdn.com/bao/uploaded///img.alicdn.com/bao/uploaded/i2/TB1V0m4XpXXXXaFbXXXXXXXXXXX_!!0-item_pic.jpg_q50.jpg);"></div>
-                <div class="text">
-                    [买手推荐]果小二夏威夷果奶油口味特产坚果零食品...
-                </div>
-                <div class="price">¥35.0</div>
-            </div>
-            <div class="guess_item">
-                <div class="guess_item_image" style="background-image: url(http://gw.alicdn.com/bao/uploaded///img.alicdn.com/bao/uploaded/i2/TB1V0m4XpXXXXaFbXXXXXXXXXXX_!!0-item_pic.jpg_q50.jpg);"></div>
-                <div class="text">
-                    [买手推荐]果小二夏威夷果奶油口味特产坚果零食品...
-                </div>
-                <div class="price">¥35.0</div>
-            </div>
-
-        </div>
     </div>
 
     <!--首页搜索 模块-->
@@ -928,7 +1092,7 @@ function toggleClass(obj,cls){
         </div>
     </div>
     <div class="search_context">
-        <input type="text">
+        <input type="text" class="search_text">
         <button type="button"></button>
     </div>
 </div>
@@ -1020,12 +1184,15 @@ function toggleClass(obj,cls){
  * depend: util
  */
 !function(){
+
     var search_ipt= document.getElementById('search');
+    var search_text= document.getElementsByClassName('search_text')[0];
     var search_close_btn= document.getElementsByClassName('close_search')[0];
     var search_content= document.getElementsByClassName('home_search')[0];
     var search_item_btn= document.getElementsByClassName('search_type_item');
     search_ipt.addEventListener('click', function(){
         search_content.style.display= 'block'
+        search_text.autofocus= 'true';
     }, false);
     search_close_btn.addEventListener('click', function(){
         search_content.style.display= 'none';
@@ -1039,7 +1206,7 @@ function toggleClass(obj,cls){
             removeClass(search_item_btn[focusId],'action');
             addClass(this, 'action')
         }{
-            focusId= this.getAttribute('data-typeID');  //储存当前类型值攻下次使用
+            focusId= this.getAttribute('data-typeID');  //储存当前类型值供下次使用
         }
     }
     for(var item in search_item_btn){
@@ -1055,13 +1222,38 @@ function toggleClass(obj,cls){
     <!--首页菜单-->
     <div class="home_menu">
     <div class="menu_mask"></div>
-    <div class="menu_centent">
+    <div class="menu_centent menu_centent_hide">
         <ul class="circle">
             <li class="more">
                 <a data-url="//h5.m.taobao.com/moreapp/index.html?pds=apply%23h%23taojia"></a>
                 <span class="bg"></span>
             </li>
+            <li class="logis">
+                <a data-url="//h5.m.taobao.com/awp/mtb/olist.htm?#!/awp/mtb/olist.htm?sta=5"></a>
+                <span class="bg"></span>
+            </li>
+            <li class="ww">
+                <a data-url="//h5.m.taobao.com/awp/mtb/mtb.htm?"></a>
+                <span class="bg"></span>
+            </li>
+            <li class="individ">
+                <a data-url="//h5.m.taobao.com/awp/mtb/mtb.htm?"></a>
+                <span class="bg"></span>
+            </li>
+            <li class="car">
+                <a data-url="//h5.m.taobao.com/awp/base/bag.htm?pds=cart%23h%23taojia"></a>
+                <span class="bg"></span>
+            </li>
+            <li class="search">
+                <a data-url="//h5.m.taobao.com/awp/base/bag.htm?pds=cart%23h%23taojia"></a>
+                <span class="bg"></span>
+            </li>
+            <li class="tplgo">
+                <a data-url="//m.taobao.com?pds=home%23h%23taojia"></a>
+                <span class="bg"></span>
+            </li>
         </ul>
+
         <div class="home_logo"></div>
     </div>
     <div class="menu_btn">
@@ -1079,7 +1271,19 @@ function toggleClass(obj,cls){
   z-index: 1000;
 }
 .home_menu .menu_mask {
-  display: none;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #eee;
+  opacity: 0;
+  -webkit-transition: all linear .15s;
+  pointer-events: none;
+}
+.home_menu .menu_mask_on {
+  opacity: 0.3;
+  pointer-events: auto;
 }
 .home_menu .menu_centent {
   width: 3.92rem;
@@ -1089,6 +1293,7 @@ function toggleClass(obj,cls){
   left: 0.48rem;
   background: transparent;
   z-index: 1010;
+  -webkit-transition: all linear .15s;
 }
 .home_menu .menu_centent .circle {
   width: 3.92rem;
@@ -1101,6 +1306,16 @@ function toggleClass(obj,cls){
   background-position: 0 0;
   -webkit-background-size: 3.9rem;
   background-size: 3.9rem;
+}
+.home_menu .menu_centent_hide {
+  opacity: 0;
+  -webkit-transform: translate(-2.2rem, 2.2rem) scale(0.2);
+  pointer-events: none;
+}
+.home_menu .menu_centent_show {
+  opacity: 1;
+  -webkit-transform: translate(0, 0) scale(1);
+  pointer-events: auto;
 }
 .home_menu .circle .more {
   width: 1.5rem;
@@ -1131,10 +1346,185 @@ function toggleClass(obj,cls){
   background-size: 3.9rem;
   background-position: 0 0;
 }
+.home_menu .circle .logis {
+  width: 1.56rem;
+  height: 1.28rem;
+  position: absolute;
+  right: 1.94rem;
+  bottom: 0.15rem;
+  background-color: transparent;
+}
+.home_menu .circle .logis a {
+  width: 0.8rem;
+  height: 0.6rem;
+  display: block;
+  background-color: transparent;
+  margin-top: 0.35rem;
+  margin-left: 0.6rem;
+}
+.home_menu .circle .logis span {
+  width: 1.5rem;
+  height: 1.2rem;
+  position: absolute;
+  display: none;
+  top: 0;
+  z-index: 1020;
+  pointer-events: none;
+  background-image: url(http://assets.alicdn.com/mw/base/styles/component/taoplus/images/sprite2.png);
+  -webkit-background-size: 3.9rem;
+  background-size: 3.9rem;
+  background-position: -1.35rem 0;
+}
+.home_menu .circle .ww {
+  width: 1.02rem;
+  height: 1.72rem;
+  position: absolute;
+  left: 0.25rem;
+  bottom: 1.1rem;
+  background-color: transparent;
+}
+.home_menu .circle .ww a {
+  width: 0.7rem;
+  height: 0.8rem;
+  display: block;
+  background-color: transparent;
+  margin-top: 0.45rem;
+  margin-left: 0;
+}
+.home_menu .circle .ww span {
+  width: 0.9rem;
+  height: 1.72rem;
+  position: absolute;
+  display: none;
+  top: 0.05rem;
+  z-index: 1020;
+  pointer-events: none;
+  background-image: url(http://assets.alicdn.com/mw/base/styles/component/taoplus/images/sprite2.png);
+  -webkit-background-size: 3.9rem;
+  background-size: 3.9rem;
+  background-position: -3rem 0;
+}
+.home_menu .circle .individ {
+  width: 1.58rem;
+  height: 1.36rem;
+  position: absolute;
+  left: 0.49rem;
+  top: 0.25rem;
+  background-color: transparent;
+}
+.home_menu .circle .individ a {
+  width: 0.7rem;
+  height: 0.8rem;
+  display: block;
+  background-color: transparent;
+  margin-top: 0.2rem;
+  margin-left: 0.5rem;
+}
+.home_menu .circle .individ span {
+  width: 1.48rem;
+  height: 1.26rem;
+  position: absolute;
+  display: none;
+  top: 0;
+  z-index: 1020;
+  pointer-events: none;
+  background-image: url(http://assets.alicdn.com/mw/base/styles/component/taoplus/images/sprite2.png);
+  -webkit-background-size: 3.9rem;
+  background-size: 3.9rem;
+  background-position: 0 -1.22rem;
+}
+.home_menu .circle .car {
+  width: 1.54rem;
+  height: 1.38rem;
+  position: absolute;
+  right: 0.375rem;
+  top: 0.2rem;
+  background-color: transparent;
+}
+.home_menu .circle .car a {
+  width: 0.7rem;
+  height: 0.8rem;
+  display: block;
+  background-color: transparent;
+  margin-top: 0.2rem;
+  margin-left: 0.5rem;
+}
+.home_menu .circle .car span {
+  width: 1.54rem;
+  height: 1.3rem;
+  position: absolute;
+  display: none;
+  top: 0;
+  z-index: 1020;
+  pointer-events: none;
+  background-image: url(http://assets.alicdn.com/mw/base/styles/component/taoplus/images/sprite2.png);
+  -webkit-background-size: 3.9rem;
+  background-size: 3.9rem;
+  background-position: 0 -6.3rem;
+}
+.home_menu .circle .search {
+  width: 1rem;
+  height: 1.76rem;
+  position: absolute;
+  right: 0.2rem;
+  top: 1.14rem;
+  background-color: transparent;
+}
+.home_menu .circle .search a {
+  width: 0.7rem;
+  height: 0.8rem;
+  display: block;
+  background-color: transparent;
+  margin-top: 0.4rem;
+  margin-left: 0.2rem;
+}
+.home_menu .circle .search span {
+  width: 0.923rem;
+  height: 1.76rem;
+  position: absolute;
+  display: none;
+  top: 0;
+  z-index: 1020;
+  pointer-events: none;
+  background-image: url(http://assets.alicdn.com/mw/base/styles/component/taoplus/images/sprite2.png);
+  -webkit-background-size: 3.9rem;
+  background-size: 3.9rem;
+  background-position: -2.984rem -5.48rem;
+}
+.home_menu .circle .tplgo {
+  width: 1.55rem;
+  height: 1.55rem;
+  position: absolute;
+  left: 1.1700rem;
+  top: 1.14rem;
+  background-color: transparent;
+}
+.home_menu .circle .tplgo a {
+  width: 1.55rem;
+  height: 1.55rem;
+  display: block;
+  background-color: transparent;
+  margin-top: 0;
+  margin-left: 0;
+}
+.home_menu .circle .tplgo span {
+  width: 1.55rem;
+  height: 1.55rem;
+  position: absolute;
+  display: none;
+  top: 0;
+  z-index: 1020;
+  pointer-events: none;
+  background-image: url(http://assets.alicdn.com/mw/base/styles/component/taoplus/images/sprite2.png);
+  -webkit-background-size: 3.9rem;
+  background-size: 3.9rem;
+  background-position: -1.472rem -4.96rem;
+}
 .home_menu .menu_btn {
   position: absolute;
   width: 0.96rem;
   height: 0.96rem;
+  z-index: 1011;
 }
 .home_menu .menu_btn ul {
   list-style: none;
@@ -1145,7 +1535,7 @@ function toggleClass(obj,cls){
   width: 0.96rem;
   height: 0.96rem;
   background: url(//assets.alicdn.com/mw/base/styles/component/taoplus/images/sprite1.png) no-repeat;
-  background-position: 0 -4rem;
+  background-position: 0 -3.98rem;
   -webkit-background-size: 3.9rem;
   background-size: 3.9rem;
 }
@@ -1158,12 +1548,20 @@ function toggleClass(obj,cls){
   -webkit-background-size: 3.9rem;
   background-size: 3.9rem;
 }
+.home_menu .menu_btn ul.menu_btn_off {
+  background-position: -1.14rem -3.98rem;
+}
 </style>
 <script type="text/javascript">/**
  * Created by snow on 2015/6/18.
  */
 !function(){
-    hoverBtn= document.querySelectorAll('.circle a');
+    var circleShowed= false;
+    var hoverBtn= document.querySelectorAll('.circle a');
+    var mask= document.querySelector('.menu_mask');
+    var menu_btn_bg= document.querySelector('.menu_btn ul');
+    var menu_btn= document.querySelector('.menu_btn ul li');
+    var menu_centent= document.querySelector('.menu_centent');
     for( var i in hoverBtn){
         var ele= hoverBtn[i];
         if(ele.nodeType === 1){
@@ -1181,7 +1579,25 @@ function toggleClass(obj,cls){
             }, false)
         }
     }
+
+    menu_btn.addEventListener('click', function(){
+        if(circleShowed){
+            removeClass(mask, 'menu_mask_on');
+            removeClass(menu_btn_bg, 'menu_btn_off');
+            removeClass(menu_centent, 'menu_centent_show');
+            addClass(menu_centent, 'menu_centent_hide');
+            circleShowed= false;
+        }else{
+            addClass(mask, 'menu_mask_on');
+            addClass(menu_btn_bg, 'menu_btn_off');
+            removeClass(menu_centent, 'menu_centent_hide');
+            addClass(menu_centent, 'menu_centent_show');
+            circleShowed= true;
+        }
+    }, false)
+
 }();</script>
+    <script src="/ok/taobao/dist/modules/index.js"></script>
 
 
     <!--<script type='text/javascript' id="__bs_script__">//<![CDATA[

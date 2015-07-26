@@ -37,5 +37,5 @@ fis.config.set('roadmap.ext.less', 'css');
 });*/
 
 fis.config.set('roadmap', {
-        domain : "http://127.0.0.1:88/ok/taobao/dist/"
+        domain : "/ok/taobao/dist"
     });
