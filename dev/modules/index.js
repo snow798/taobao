@@ -3,16 +3,20 @@
  */
 !function(){
     var loaded= false;
+    window.scrollPage= {};
     //下拉刷新
     document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
     document.addEventListener('DOMContentLoaded', function(){
-        var myScroll = new IScroll('#wrapper', {
+        scrollPage = new IScroll('#wrapper', {
             scrollbars: false,
             mouseWheel: true,
             interactiveScrollbars: true,
             shrinkScrollbars: 'scale',
-            fadeScrollbars: true
+            fadeScrollbars: true,
+            deceleration: 0.003
         });
+        lazyImage();
+        console.log(scrollPage)
     }, false);
     function initData(){
         /*util.loadJs('http://gw.alicdn.com/L1/584/183486/74a6066df1.js',function(){
@@ -275,7 +279,7 @@
                     sel= data.items[item];
                     var item_el= document.createElement('div');
                     item_el.className= 'guess_item';
-                    item_el.innerHTML= '<div class="guess_item_image" data-img="'+sel.imageUrl[0].imgUrl+'" style="background-image: url();"></div><div class="text">'+sel.title[0].valueDesc+'</div><div class="price">'+sel.title[1].valueDesc+'</div>';
+                    item_el.innerHTML= '<div lazyload="true" class="guess_item_image" data-image="'+sel.imageUrl[0].imgUrl+'" style="background-image: url();"></div><div class="text">'+sel.title[0].valueDesc+'</div><div class="price">'+sel.title[1].valueDesc+'</div>';
                     guess_context.appendChild(item_el);
                 }
 
@@ -324,6 +328,30 @@
 
             }
         }
+    }
+    function lazyImage(){
+        var setT= 0;
+        var loadImg= function(){
+            var allDiv= document.querySelectorAll('div');
+            var scrolly= Math.abs(scrollPage.y);
+            for(var i in allDiv){
+                var ele= allDiv[i];
+                if(ele.nodeType == 1 && Boolean(ele.getAttribute('lazyload')) ){
+                    if(ele.offsetTop< document.documentElement.clientHeight+scrolly ){
+                        ele.style.backgroundImage= 'url('+ele.getAttribute('data-image')+')';
+                        ele.setAttribute('lazyload', 'false');
+                    }
+                }
+            }
+        };
+        scrollPage.on('scrollStart', function(ev){
+            if(setT>0){
+                clearTimeout(setT);
+            }
+        });
+        scrollPage.on('scrollEnd', function(ev){
+                setT=setTimeout(loadImg, 100);
+        });
     }
     function init(){
         initData();   //数据填充
