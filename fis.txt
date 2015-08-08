@@ -1,16 +1,20 @@
 
-ÉèÖÃ¾²Ì¬×ÊÔ´µÄÓòÃûÇ°×º
+ï¿½ï¿½ï¿½Ã¾ï¿½Ì¬ï¿½ï¿½Ô´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç°×º
 fis release --domains --dest ../dist
 
-´ò°üÅäÖÃ
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 fis release --pack --md5 --dest ./dist
 
 
 
 fis release --watch --domains --dest ../dist
 
---domains Ó¦ÓÃ×ÊÔ´Ç°×º
+pure release --watch --domains --dest ../dist
 
---optimize  Ñ¹Ëõ
+pure release -omp --domains --dest ../dist   æ·»åŠ é›¶æ•£èµ„æºåˆå¹¶   çº¿ä¸Šç¯å¢ƒä½¿ç”¨
 
---pack ´ò°ü
+--domains Ó¦ï¿½ï¿½ï¿½ï¿½Ô´Ç°×º
+
+--optimize  Ñ¹ï¿½ï¿½
+
+--pack ï¿½ï¿½

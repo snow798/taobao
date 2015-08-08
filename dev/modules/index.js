@@ -337,10 +337,23 @@
             for(var i in allDiv){
                 var ele= allDiv[i];
                 if(ele.nodeType == 1 && Boolean(ele.getAttribute('lazyload')) ){
-                    if(ele.offsetTop< document.documentElement.clientHeight+scrolly ){
-                        ele.style.backgroundImage= 'url('+ele.getAttribute('data-image')+')';
-                        ele.setAttribute('lazyload', 'false');
+                    var isload= ele.getAttribute('lazyload');
+                    if(isload == 'true'){
+                        //console.log(ele)
+                        if(ele.offsetTop< document.documentElement.clientHeight+scrolly ){
+                            ele.setAttribute('lazyload', 'false');
+                            var imgtag= 'image'+ i;
+                             imgtag= new Image();
+                             imgtag.deImg= ele;
+                             imgtag.src= ele.getAttribute('data-image');
+                             imgtag.onload= function(){
+                             this.deImg.style.backgroundImage= 'url('+this.src+')';
+                             }
+                        }
+                    }else{
+                       // console.log(ele,'no')
                     }
+
                 }
             }
         };

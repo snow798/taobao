@@ -29,7 +29,7 @@ fis.config.set('modules.parser.less', 'less');
 //将less文件编译为css
 fis.config.set('roadmap.ext.less', 'css');
 
-
+fis.config.set('settings.postpackager.simple.autoCombine', true);
 /*fis.config.set({
     roadmap : {
         domain : "http://127.0.0.1:88/ok/taobao/dist/"
