@@ -11,7 +11,7 @@ fis release --watch --domains --dest ../dist
 
 pure release --watch --domains --dest ../dist
 
-pure release -omp --domains --dest ../dist   添加零散资源合并   线上环境使用
+pure release -omp --watch --domains --dest ../dist   添加零散资源合并   线上环境使用
 
 --domains Ӧ����Դǰ׺
 

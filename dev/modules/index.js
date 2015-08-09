@@ -332,7 +332,7 @@
     function lazyImage(){
         var setT= 0;
         var loadImg= function(){
-            var allDiv= document.querySelectorAll('div');
+            var allDiv= document.querySelectorAll('.guess_item_image');
             var scrolly= Math.abs(scrollPage.y);
             for(var i in allDiv){
                 var ele= allDiv[i];

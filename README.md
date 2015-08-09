@@ -30,14 +30,84 @@ Ya淘宝移动端网站(学习)
 贴链接： [web app变革之rem](http://isux.tencent.com/web-app-rem.html)
 
 rem实现原理上面链接有详细论述<br/>
+
 + 1单位rem(1rem)等于根元素设置的字体大小(即html元素的font-size值)，所以当html的font-size等于20px时，设div的width等于2rem即 div的width等于2*20px= 40px；
+
 + 改变html元素字体大小即改变了页面所用应用了rem为单位的元素相关样式实际尺寸；
 
-如html font-size:20px, img元素 的实际尺寸为宽120px,高60px<br/>
+如html的font-size:20px, img元素 的实际尺寸为宽120px,高60px<br/>
  即源码中应为:
 
     <img src="logo.png" style="width: 6rem; height: 3rem">
 
+改变根元素字大小就可以很轻松的实现不同尺寸屏幕的适配：
+
+1.媒体查询：
+
+    @media only screen and (min-width: 401px){
+        html {
+            font-size: 25px !important;
+        }
+    }
+    @media only screen and (min-width: 428px){
+        html {
+            font-size: 26.75px !important;
+        }
+    }
+    @media only screen and (min-width: 481px){
+        html {
+            font-size: 30px !important;
+        }
+    }
+    @media only screen and (min-width: 569px){
+        html {
+            font-size: 35px !important;
+        }
+    }
+    @media only screen and (min-width: 641px){
+        html {
+            font-size: 40px !important;
+        }
+    }
+
+2.JS根据屏幕宽度自动计算出****当前****终端页面合适的字体大小：
+
+    //自适应REM设置
+    !function(){
+        var isChange= false, oldScreenWidth= 375, oldRem= 50;   // 默认iPhone6为基准[屏款375，默认根字体大小50px]
+        var html= document.getElementsByTagName('html')[0];
+        var getStyle = function (element,attr) {
+            if(typeof window.getComputedStyle!='undefined'){
+                    return parseFloat(window.getComputedStyle(element,null)[attr]);
+                }else if(element.currentStyle){
+                    return parseFloat(element.currentStyle[attr]);
+                }
+        };
+        function initRem(){
+            html.style.fontSize= document.body.clientWidth*oldRem/oldScreenWidth+'px';
+            oldScreenWidth= document.body.clientWidth;
+            oldRem= getStyle(html, 'font-size');
+            isChange= false;
+        }
+        document.addEventListener('DOMContentLoaded', function(){
+            initRem();
+        });
+        window.addEventListener('resize', function(){
+            if(!isChange){
+                isChange= true;
+                setTimeout(initRem, 700);
+            }
+        })
+    }()
+
+
+>发了几个小时在不同屏幕大小下实现了JS的自适应调整功能
+
+>默认标准宽度为375px, 这个数值是iphone6的屏幕宽度，所以Chrome的调试工具Device需选择iphone6
+
+>根字体大小默认设为50px,所以屏幕100%宽度就是7.5rem。 美团触屏版使用的是100px
+
+>使用时代码直接粘贴到页面
 
 
 参考
