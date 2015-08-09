@@ -17,16 +17,31 @@ Ya淘宝移动端网站(学习)
 不管干嘛就是起步难，不是吗。以前大部分时间在前端开发上主要做的是PC端，真正做的WAP都不是很复杂，当然了市场上绝大多数也是不复杂的，有m.taobao.com这样复杂的也不多。
 
 刚开始考虑的是用半分比(%)尺寸布局:
----<div class="main">
----        <div style="width:20%">...</div>
----        <div style="width:80%">...</div>
----</div>
 
-特点：简单快捷， 适合于纯文字元素内容的显示。<br/>
-缺点是，当布局中需要包含固定尺寸大小元素时前端实现会变复杂：<br/>
-1、在不同尺寸终端上 固定尺寸元素与周围元素实际距离不确定，不能真正的还原设计图<br/>
+    <div class="main">
+            <div style="width:20%">...</div>
+            <div style="width:80%">...</div>
+    </div>
+
+最后发现在很多情况下不能真的大道自适应，特别是有大量的图片元素时高度缩放不好处理，即固定尺寸元素出现时百分比布局显得有点力不从心。
+问题来了，那就解决问题。
+查阅相关资料————用 'rem'：
+
+贴链接： [web app变革之rem](http://isux.tencent.com/web-app-rem.html)
+
+rem实现原理上面链接有详细论述<br/>
++ 1单位rem(1rem)等于根元素设置的字体大小(即html元素的font-size值)，所以当html的font-size等于20px时，设div的width等于2rem即 div的width等于2*20px= 40px；
++ 改变html元素字体大小即改变了页面所用应用了rem为单位的元素相关样式实际尺寸；
+
+如html font-size:20px, img元素 的实际尺寸为宽120px,高60px<br/>
+ 即源码中应为:
+
+    <img src="logo.png" style="width: 6rem; height: 3rem">
+
 
 
 参考
 ---------------
+[Markdown 入门参考](https://github.com/LearnShare/Learning-Markdown)
 [Mobile Web Favorites || 移动前端开发收藏夹](https://github.com/hoosin/mobile-web-favorites)
+
