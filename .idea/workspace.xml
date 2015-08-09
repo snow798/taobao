@@ -6,12 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="bb30d94e-6bb8-45f8-ade3-b7d30f060687" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fis.txt" afterPath="$PROJECT_DIR$/fis.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/index.html" afterPath="$PROJECT_DIR$/dist/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dev/modules/index.js" afterPath="$PROJECT_DIR$/dev/modules/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/modules/util/index.js" afterPath="$PROJECT_DIR$/dist/modules/util/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dev/modules/home_menu/index.less" afterPath="$PROJECT_DIR$/dev/modules/home_menu/index.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/map.json" afterPath="$PROJECT_DIR$/dist/map.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="taobao.iws" />
@@ -59,8 +53,8 @@
       <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.71597636" vertical-offset="2132" max-vertical-offset="2952">
-              <caret line="109" column="13" selection-start-line="109" selection-start-column="13" selection-end-line="109" selection-end-column="13" />
+            <state vertical-scroll-proportion="0.3964497" vertical-offset="1124" max-vertical-offset="2952">
+              <caret line="58" column="39" selection-start-line="58" selection-start-column="39" selection-end-line="58" selection-end-column="39" />
               <folding />
             </state>
           </provider>
@@ -461,7 +455,13 @@
       <option name="project" value="LOCAL" />
       <updated>1439110568454</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="readme 添加">
+      <created>1439112207190</created>
+      <option name="number" value="00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1439112207190</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TodoView" selected-index="3">
@@ -1070,8 +1070,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.71597636" vertical-offset="2132" max-vertical-offset="2952">
-          <caret line="109" column="13" selection-start-line="109" selection-start-column="13" selection-end-line="109" selection-end-column="13" />
+        <state vertical-scroll-proportion="0.3964497" vertical-offset="1124" max-vertical-offset="2952">
+          <caret line="58" column="39" selection-start-line="58" selection-start-column="39" selection-end-line="58" selection-end-column="39" />
           <folding />
         </state>
       </provider>
