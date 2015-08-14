@@ -27,7 +27,7 @@ Ya淘宝移动端网站(学习)
 问题来了，那就解决问题。
 查阅相关资料————用 'rem'：
 
-贴链接： [web app变革之rem](http://isux.tencent.com/web-app-rem.html)[iPhone 6 / 6 Plus 出现后，如何改进工作流以实现一份设计稿支持多个尺寸？](http://www.zhihu.com/question/25308946?utm_campaign=weibo_page&utm_medium=rss&utm_source=weibo)
+贴链接： [web app变革之rem](http://isux.tencent.com/web-app-rem.html)<br/>[iPhone 6 / 6 Plus 出现后，如何改进工作流以实现一份设计稿支持多个尺寸？](http://www.zhihu.com/question/25308946?utm_campaign=weibo_page&utm_medium=rss&utm_source=weibo)
 
 rem实现原理上面链接有详细论述<br/>
 
